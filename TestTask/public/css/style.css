@@ -1,0 +1,492 @@
+body{
+    margin: 0px;
+    font-family: 'Inter', sans-serif;
+}
+
+.font-inter {
+    font-family: 'Inter', sans-serif;
+}
+
+.text{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 400;
+}
+
+.w-max-content {
+  width: max-content !important;
+}
+
+
+@media (min-width: 1400px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1200px !important;
+    }
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.preHeader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #D0E8F9;
+    height: 55px;
+}
+
+.basic-small-text{
+    font-weight: 400;
+    margin: 0px;
+}
+
+.basic-normal-text{
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0px;
+}
+
+.basic-bold-text-18{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0px;
+}
+
+.basic-bold-text-16{
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0px;
+}
+
+.basic-bold-text-24{
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0px;
+}
+
+.basic-bold-text-20{
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: 0;
+    margin: 0px;
+}
+
+.basic-regular-text{
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0px;
+}
+
+.basic-regular-text-16{
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+  margin: 0px;
+}
+
+.basic-regular-text-14{
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 25px;
+  letter-spacing: 0;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0;
+  margin: 0px;
+}
+
+.basic-regular-text-14{
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 25px;
+  letter-spacing: 0;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0;
+  margin: 0px;
+}
+
+
+.underline{
+    text-decoration: underline;
+}
+
+.basic-big-text-62{
+    font-size: 62px;
+    font-weight: 600;
+    margin: 0px;
+    line-height: 65px;
+}
+
+.basic-big-text-52{
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 52px;
+    line-height: 55px;
+    letter-spacing: 0;
+    margin: 0px;
+}
+
+.basic-big-text-grey{
+  font-family: "Inter", sans-serif;
+  font-weight: 500; 
+  font-style: normal;    
+  font-size: 62px;
+  line-height: 60px;
+  letter-spacing: 0;
+}
+
+
+.basic-big-text-white{
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 32px;
+    line-height: 35px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    margin: 0px;
+}
+
+.InfoText{
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-align: center;
+    margin: 0px;
+}
+
+.SideBar{
+    display: flex;
+    gap: 30px;
+}
+
+.basic-button{
+    display: flex;
+    border-radius: 32px;
+    padding: 12px 24px;
+    background-color: #0DA3FF;
+    align-items: center;
+}
+
+.basic-button-press{
+    display: flex;
+    border-radius: 32px;
+    padding: 12px 24px;
+    background-color: #0DA3FF1A;
+    align-items: center;
+}
+
+.callBlock{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.BlockMain{
+    display: flex;
+    background-color: #F1F8FD;
+    height: max-content;
+    width: 100%;
+    justify-content: flex-end;
+
+    background: url('../images/Back.jpg') no-repeat right center;
+    background-size: auto 106%;
+}
+
+
+.OurServices{
+    padding: 50px 0px;
+    width: 100%;
+    height: max-content;
+}
+
+.Block{
+    display: flex;
+    flex-direction: column;
+    background-color: #F1F8FD;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.BlockLine{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.Services{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.ButtonServices{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: max-content;
+    border-radius: 32px;
+    border: #0DA3FF 1px solid;
+    justify-content: space-between;
+}
+
+.ButtonServicesInside{
+    padding: 12px 24px;
+    border-radius: 32px;
+    background-color: #0DA3FF;
+}
+
+.HorizontalBlock{
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.cube{
+    display: flex;
+    width: 100%;
+    height: 30px;
+    border-left: 2px solid #0DA3FF;
+    justify-content: center;
+    align-items: center;
+}
+
+.cube:last-child {
+  border-right: none;
+}
+
+.line{
+    border: #DDEBF4 1px solid;
+    width: 95%;
+    height: 1px;
+}
+
+.AboutBlock{
+    width: 100%;
+    height: max-content;
+    padding: 40px 0px 120px 0px;
+    background-color: #F1F8FD;
+}
+
+.ButtonSliderAbsolute {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    bottom: 5px;
+    right: 20px;
+    padding: 5px 5px;
+    background-color: white;
+    color: #fff;
+    gap: 5px;
+    border-radius: 9999px;
+}
+
+.Circle {
+    width: 40px;
+    height: 40px;
+    background-color: #0DA3FF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;   
+}
+
+.MedPersonal{
+    padding: 80px 0px;
+    height: max-content;
+    width: 100%;
+    overflow: hidden;
+}
+
+.BlockAboutPersonal{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: max-content;
+    background-color: #F1F8FD;
+    padding: 10px 20px;
+    border-radius: 15px;
+}
+
+.MedPhotos {
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+  max-height: 400px;
+  position: relative;
+  left: 120px; /* или right: -50px; — регулируешь вылет */
+}
+
+.MedPhotos img{
+    border-radius: 15px;
+    max-width: 310px;
+    box-shadow: 0px 4px 25px 0px rgba(180, 204, 221, 0.5);
+}
+
+.Priemych{
+    padding: 100px 0px;
+    width: 100%;
+    height: max-content;
+    background-color: #F1F8FD;
+}
+
+.BlockLeftLine{
+    padding-left: 20px;
+    border-left: 2px solid #0DA3FF;
+}
+
+.AnswerAnket{
+    padding: 40px;
+    border-radius: 20px;
+    width: 100%;
+    height: max-content;
+    background-color: #0095F1;
+}
+
+.InputBlock{
+    padding: 15px;
+    width: 100%;
+    border-radius: 32px;
+    border: none;
+    background-color: #FFFFFF4D;
+}
+
+.InputBlock::placeholder {
+  color: white;
+  opacity: 1;
+}
+
+.FAQ{
+    width: 100%;
+    height: max-content;
+    padding: 100px 0px;
+}
+
+.AccardeonBlock{
+    display: flex;
+    gap: 20px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 7.3px 0px rgba(180, 204, 221, 0.5);
+    flex-direction: column;
+}
+
+.LineHoriz{
+    border-radius: 15px;
+    width: 20px;
+    height: 1px;
+    border: 2px #0DA3FF solid;
+}
+
+.ContactFAQ{
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+    height: max-content;
+    background-color: #F1F8FD;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+.InputBlockWhite{
+    padding: 15px;
+    width: 100%;
+    border-radius: 32px;
+    border: none;
+    background-color: #FFFFFF;
+    text-align: left;
+    vertical-align: top;
+    resize: none;    
+}
+
+.InputBlockWhite::placeholder {
+  color: #9CB4C5;
+  opacity: 1;
+}
+
+.BlockOtzyv{
+    position: relative;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    gap: 40px;
+    background-color: #F1F8FD;
+    border-radius: 20px;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.BlockOtzyv img {
+    position: absolute;
+    top: -7px;
+    left: 520px;
+    width: 4%;
+    height: auto;
+}
+
+/* .DowmBlockOtzyv{
+    padding: 100px 0px;
+} */
+
+.Footer{
+    width: 100%;
+     position: relative;
+    height: max-content;
+    background-color: #0DA3FF;
+}
+
+.Footer .col-4 {
+    position: relative;
+}
+
+.Footer .col-4 img {
+    width: 360px;
+    position: absolute;
+    bottom: 0;
+    right: 0px;
+    transform: translateY(0%);
+    max-height: 600px;
+}
+
+.BlockInfo{
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    width: 100%;
+    height: max-content;
+    background-color: #232323;
+    gap: 5px;
+    color: #FFFFFF8C;
+}
+
+.BlockInfo p{
+    color: #FFFFFF8C;
+}
+
+.DownBlock{
+    padding: 10px 0px;
+    display: flex;
+    background-color: #1A1A1A;
+    justify-content: center;
+}
