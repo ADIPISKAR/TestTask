@@ -1,4 +1,19 @@
         <style>
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(.4,2,.6,1), opacity 0.4s;
+            opacity: 0;
+        }
+        .accordion-content.open {
+            opacity: 1;
+            max-height: 500px;
+        }
+        .AccardeonBlock {
+            cursor: pointer;
+        }
+        </style>
+        <style>
         .fade-text {
             opacity: 0;
             transition: opacity 0.5s;
@@ -685,39 +700,96 @@
                             <div class="AccardeonBlock">
                                 <div class="d-flex flex-row justify-between align-items-center">
                                     <p class="basic-bold-text-20">Когда нужно обращаться в наркологическую клинику?</p>
-                                    <div class='LineHoriz'></div>
+                                    <span class="accordion-toggle-wrap">
+                                        <img src="{{ asset('images/pls.png') }}" class="accordion-toggle" style="display:inline;">
+                                        <img src="http://127.0.0.1:8000/images/mns.png" class="accordion-toggle-minus" style="display:none;">
+                                    </span>
                                 </div>
-                                <p class="basic-normal-text">Наши квалифицированные врачи и наркологи предлагают широкий спектр наркологических услуг, включая стационарное лечение, кодирование, и многие другие виды лечения. Мы заботимся о каждом пациенте и гарантируем высокое качество нашей работы. Не стесняйтесь обращаться к нам в любое время, мы всегда готовы оказать наркологическую.</p>
-                            </div>
-
-                            <div class="AccardeonBlock">
-                                <div class="d-flex flex-row justify-between align-items-center">
-                                    <p class="basic-bold-text-20">Когда нужно обращаться в наркологическую клинику?</p>
-                                    <img src="{{ asset('images/pls.png') }}">
+                                <div class="accordion-content">
+                                    <p class="basic-normal-text">Наши квалифицированные врачи и наркологи предлагают широкий спектр наркологических услуг, включая стационарное лечение, кодирование, и многие другие виды лечения. Мы заботимся о каждом пациенте и гарантируем высокое качество нашей работы. Не стесняйтесь обращаться к нам в любое время, мы всегда готовы оказать наркологическую.</p>
                                 </div>
                             </div>
 
                             <div class="AccardeonBlock">
                                 <div class="d-flex flex-row justify-between align-items-center">
                                     <p class="basic-bold-text-20">Когда нужно обращаться в наркологическую клинику?</p>
-                                    <img src="{{ asset('images/pls.png') }}">
+                                    <span class="accordion-toggle-wrap">
+                                        <img src="{{ asset('images/pls.png') }}" class="accordion-toggle" style="display:inline;">
+                                        <img src="http://127.0.0.1:8000/images/mns.png" class="accordion-toggle-minus" style="display:none;">
+                                    </span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p class="basic-normal-text">Наши квалифицированные врачи и наркологи предлагают широкий спектр наркологических услуг, включая стационарное лечение, кодирование, и многие другие виды лечения. Мы заботимся о каждом пациенте и гарантируем высокое качество нашей работы. Не стесняйтесь обращаться к нам в любое время, мы всегда готовы оказать наркологическую.</p>
                                 </div>
                             </div>
 
                             <div class="AccardeonBlock">
                                 <div class="d-flex flex-row justify-between align-items-center">
                                     <p class="basic-bold-text-20">Когда нужно обращаться в наркологическую клинику?</p>
-                                    <img src="{{ asset('images/pls.png') }}">
+                                    <span class="accordion-toggle-wrap">
+                                        <img src="{{ asset('images/pls.png') }}" class="accordion-toggle" style="display:inline;">
+                                        <img src="http://127.0.0.1:8000/images/mns.png" class="accordion-toggle-minus" style="display:none;">
+                                    </span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p class="basic-normal-text">Наши квалифицированные врачи и наркологи предлагают широкий спектр наркологических услуг, включая стационарное лечение, кодирование, и многие другие виды лечения. Мы заботимся о каждом пациенте и гарантируем высокое качество нашей работы. Не стесняйтесь обращаться к нам в любое время, мы всегда готовы оказать наркологическую.</p>
                                 </div>
                             </div>
 
                             <div class="AccardeonBlock">
                                 <div class="d-flex flex-row justify-between align-items-center">
                                     <p class="basic-bold-text-20">Когда нужно обращаться в наркологическую клинику?</p>
-                                    <img src="{{ asset('images/pls.png') }}">
+                                    <span class="accordion-toggle-wrap">
+                                        <img src="{{ asset('images/pls.png') }}" class="accordion-toggle" style="display:inline;">
+                                        <img src="http://127.0.0.1:8000/images/mns.png" class="accordion-toggle-minus" style="display:none;">
+                                    </span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p class="basic-normal-text">Наши квалифицированные врачи и наркологи предлагают широкий спектр наркологических услуг, включая стационарное лечение, кодирование, и многие другие виды лечения. Мы заботимся о каждом пациенте и гарантируем высокое качество нашей работы. Не стесняйтесь обращаться к нам в любое время, мы всегда готовы оказать наркологическую.</p>
+                                </div>
+                            </div>
+
+                            <div class="AccardeonBlock">
+                                <div class="d-flex flex-row justify-between align-items-center">
+                                    <p class="basic-bold-text-20">Когда нужно обращаться в наркологическую клинику?</p>
+                                    <span class="accordion-toggle-wrap">
+                                        <img src="{{ asset('images/pls.png') }}" class="accordion-toggle" style="display:inline;">
+                                        <img src="http://127.0.0.1:8000/images/mns.png" class="accordion-toggle-minus" style="display:none;">
+                                    </span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p class="basic-normal-text">Наши квалифицированные врачи и наркологи предлагают широкий спектр наркологических услуг, включая стационарное лечение, кодирование, и многие другие виды лечения. Мы заботимся о каждом пациенте и гарантируем высокое качество нашей работы. Не стесняйтесь обращаться к нам в любое время, мы всегда готовы оказать наркологическую.</p>
                                 </div>
                             </div>
                         </div>
+                        <script>
+                        // Аккордеон с анимацией
+                        document.querySelectorAll('.AccardeonBlock').forEach(block => {
+                            const wrap = block.querySelector('.accordion-toggle-wrap');
+                            const plus = wrap ? wrap.querySelector('.accordion-toggle') : null;
+                            const minus = wrap ? wrap.querySelector('.accordion-toggle-minus') : null;
+                            const content = block.querySelector('.accordion-content');
+                            if (plus && minus) {
+                                plus.addEventListener('click', e => {
+                                    e.stopPropagation();
+                                    content.classList.toggle('open');
+                                    if (content.classList.contains('open')) {
+                                        plus.style.display = 'none';
+                                        minus.style.display = 'inline';
+                                    } else {
+                                        plus.style.display = 'inline';
+                                        minus.style.display = 'none';
+                                    }
+                                });
+                                minus.addEventListener('click', e => {
+                                    e.stopPropagation();
+                                    content.classList.remove('open');
+                                    plus.style.display = 'inline';
+                                    minus.style.display = 'none';
+                                });
+                            }
+                        });
+                        </script>
                     </div>
 
                     <div class="col-4">
