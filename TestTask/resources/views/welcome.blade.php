@@ -824,33 +824,102 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="BlockOtzyv">
-                                <img src="{{ asset('images/skoba.png') }}">
-                                <div class="d-flex flex-column" style="gap: 10px;">
-                                    <p class="basic-bold-text-20">ИННА</p>
-                                    <p class="basic-normal-text">Моему сыну 28 лет, но он начал злоупотреблять алкоголем, связался с компанией таких же неприятных ребят, бросил работу. Пришлось выводить его из запоя и отправлять на лечение, реабилитацию. Сотрудники центра сделали для нашей семьи очень многое, они вылечили моего ребенка от зависимости и помогли мне пережить этот сложный период.</p>
-                                    <p class="basic-normal-text" style="color: #0DA3FF;">Читать полностью</p>
-                                </div>
-
-                                <p class="basic-normal-text" style="color: #7192A9;">28.04.2023</p>
-                            </div>
-                        </div>
-
-                        <div class="col-6">
-                            <div class="BlockOtzyv">
-                                <img src="{{ asset('images/skoba.png') }}">
-                                <div class="d-flex flex-column" style="gap: 10px;">
-                                    <p class="basic-bold-text-20">АЛИНА</p>
-                                    <p class="basic-normal-text">Добрый день! В клинику обращались по поводу вывода из запоя, хочу выразить свою благодарность Михаилу и Артуру за профессиональный подход и поддержку, спасибо вам за помощь.</p>
-                                    {{-- <p class="basic-normal-text" style="color: #0DA3FF;">Читать полностью</p> --}}
-                                </div>
-
-                                <p class="basic-normal-text" style="color: #7192A9;">28.04.2023</p>
-                            </div>
-                        </div>
+                    <div class="row" id="reviewsRow">
+                        <!-- Отзывы будут рендериться динамически -->
                     </div>
+                    <style>
+                    .review-slide {
+                        transition: transform 0.25s cubic-bezier(.4,2,.6,1), opacity 0.25s;
+                    }
+                    .slide-left {
+                        transform: translateX(-100%);
+                        opacity: 0;
+                    }
+                    .slide-right {
+                        transform: translateX(100%);
+                        opacity: 0;
+                    }
+                    </style>
+                    <script>
+                    const reviews = [
+                        {
+                            name: 'ИННА',
+                            text: 'Моему сыну 28 лет, но он начал злоупотреблять алкоголем, связался с компанией таких же неприятных ребят, бросил работу. Пришлось выводить его из запоя и отправлять на лечение, реабилитацию. Сотрудники центра сделали для нашей семьи очень многое, они вылечили моего ребенка от зависимости и помогли мне пережить этот сложный период.',
+                            date: '28.04.2023',
+                            read: true
+                        },
+                        {
+                            name: 'АЛИНА',
+                            text: 'Добрый день! В клинику обращались по поводу вывода из запоя, хочу выразить свою благодарность Михаилу и Артуру за профессиональный подход и поддержку, спасибо вам за помощь.',
+                            date: '28.04.2023',
+                            read: false
+                        },
+                        // Можно добавить больше отзывов
+                    ];
+                    let reviewIndex = 0;
+                    const reviewsRow = document.getElementById('reviewsRow');
+                    function renderReviews(animClass = '') {
+                        reviewsRow.innerHTML = '';
+                        for (let i = 0; i < 2; i++) {
+                            const idx = (reviewIndex + i) % reviews.length;
+                            const r = reviews[idx];
+                            const col = document.createElement('div');
+                            col.className = 'col-6';
+                            const block = document.createElement('div');
+                            block.className = 'BlockOtzyv review-slide' + (animClass ? ' ' + animClass : '');
+                            block.innerHTML = `
+                                <img src="/images/skoba.png">
+                                <div class="d-flex flex-column" style="gap: 10px;">
+                                    <p class="basic-bold-text-20">${r.name}</p>
+                                    <p class="basic-normal-text">${r.text}</p>
+                                    ${r.read ? '<p class="basic-normal-text" style="color: #0DA3FF;">Читать полностью</p>' : ''}
+                                </div>
+                                <p class="basic-normal-text" style="color: #7192A9;">${r.date}</p>
+                            `;
+                            col.appendChild(block);
+                            reviewsRow.appendChild(col);
+                        }
+                    }
+                    function slideReviewsLeft() {
+                        const blocks = reviewsRow.querySelectorAll('.review-slide');
+                        blocks.forEach(b => b.classList.add('slide-left'));
+                        setTimeout(() => {
+                            reviewIndex = (reviewIndex + 1) % reviews.length;
+                            renderReviews('slide-right');
+                            setTimeout(() => {
+                                const newBlocks = reviewsRow.querySelectorAll('.review-slide');
+                                newBlocks.forEach(b => b.classList.remove('slide-right'));
+                            }, 20);
+                        }, 250);
+                    }
+                    function slideReviewsRight() {
+                        const blocks = reviewsRow.querySelectorAll('.review-slide');
+                        blocks.forEach(b => b.classList.add('slide-right'));
+                        setTimeout(() => {
+                            reviewIndex = (reviewIndex - 1 + reviews.length) % reviews.length;
+                            renderReviews('slide-left');
+                            setTimeout(() => {
+                                const newBlocks = reviewsRow.querySelectorAll('.review-slide');
+                                newBlocks.forEach(b => b.classList.remove('slide-left'));
+                            }, 20);
+                        }, 250);
+                    }
+                    // Навешиваем обработчики на стрелки
+                    document.querySelectorAll('.BlockOtzyv').forEach(b => b.remove()); // удалить старые
+                    renderReviews();
+                    // Выбираем стрелки только внутри блока отзывов
+                    const reviewsBlock = reviewsRow.closest('.mt-5');
+                    if (reviewsBlock) {
+                        const nav = reviewsBlock.querySelector('.d-flex.flex-row[style*="gap: 5px"]');
+                        if (nav) {
+                            const circles = nav.querySelectorAll('.Circle');
+                            if (circles.length >= 2) {
+                                circles[0].addEventListener('click', slideReviewsRight);
+                                circles[1].addEventListener('click', slideReviewsLeft);
+                            }
+                        }
+                    }
+                    </script>
                 </div>
             </div>
         </div>
