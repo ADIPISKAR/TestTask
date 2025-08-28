@@ -471,21 +471,45 @@
                     </div>
 
                     <div class="d-flex flex-row" style="gap: 5px;">
-                        <div class="Circle">
+                        <div class="Circle" id="medPrevBtn">
                             <img src="http://127.0.0.1:8000/images/strL.png" class="img-fluid">
                         </div>
-
-                        <div class="Circle">
+                        <div class="Circle" id="medNextBtn">
                             <img src="{{ asset('images/strR.png') }}" class="img-fluid">
                         </div>
                     </div>
                 </div>
 
-                <div class="MedPhotos">
+                <div class="MedPhotos" id="medPhotos">
                     <img src="{{ asset('images/Med1.jpg') }}">
                     <img src="{{ asset('images/Med2.jpg') }}">
                     <img src="{{ asset('images/Med3.jpg') }}">
+                    <img src="{{ asset('images/Med1.jpg') }}">
                 </div>
+        <script>
+        const medPhotos = document.getElementById('medPhotos');
+        const medPrevBtn = document.getElementById('medPrevBtn');
+        const medNextBtn = document.getElementById('medNextBtn');
+
+        function slideLeft() {
+            medPhotos.classList.add('slide-left');
+            setTimeout(() => {
+                medPhotos.appendChild(medPhotos.firstElementChild);
+                medPhotos.classList.remove('slide-left');
+            }, 500);
+        }
+
+        function slideRight() {
+            medPhotos.classList.add('slide-right');
+            setTimeout(() => {
+                medPhotos.insertBefore(medPhotos.lastElementChild, medPhotos.firstElementChild);
+                medPhotos.classList.remove('slide-right');
+            }, 500);
+        }
+
+        medNextBtn.addEventListener('click', slideLeft);
+        medPrevBtn.addEventListener('click', slideRight);
+        </script>
             </div>
         </div>
 

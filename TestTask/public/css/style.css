@@ -1,3 +1,11 @@
+.MedPhotos.slide-left img {
+    transform: translateX(-120px);
+    transition: transform 0.5s;
+}
+.MedPhotos.slide-right img {
+    transform: translateX(120px);
+    transition: transform 0.5s;
+}
 body{
     margin: 0px;
     font-family: 'Inter', sans-serif;
@@ -375,12 +383,14 @@ body{
   flex-direction: row;
   max-height: 400px;
   position: relative;
-  left: 120px; /* или right: -50px; — регулируешь вылет */
+  left: 120px;
 }
 
 .MedPhotos img{
     border-radius: 15px;
     max-width: 310px;
+    position: relative;
+    transition: transform 0.5s ease, opacity 0.5s ease;
     box-shadow: 0px 4px 25px 0px rgba(180, 204, 221, 0.5);
 }
 
