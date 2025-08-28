@@ -25,11 +25,11 @@
                 <img src="{{ asset('images/logo.png') }}" alt="Логотип">
 
                 <div class="SideBar">
-                    <p class="basic-normal-text" >Услуги</p>
-                    <p class="basic-normal-text">Этапы лечения</p>
-                    <p class="basic-normal-text">О нас</p>
-                    <p class="basic-normal-text">Отзывы</p>
-                    <p class="basic-normal-text">Контакты</p>
+                    <p class="basic-normal-text anim-blue" >Услуги</p>
+                    <p class="basic-normal-text anim-blue">Этапы лечения</p>
+                    <p class="basic-normal-text anim-blue">О нас</p>
+                    <p class="basic-normal-text anim-blue">Отзывы</p>
+                    <p class="basic-normal-text anim-blue">Контакты</p>
                 </div>
 
                 <div class="callBlock">
@@ -77,7 +77,7 @@
 
                         <div class="d-flex flex-row" style="gap: 20px;">
                             <div class="basic-button">
-                                <p class="basic-bold-text-16" style="color: #FFFFFF;"> Заказать звонок</p>
+                                <p class="basic-bold-text-16" style="color: #FFFFFF;">Получить помощь</p>
                             </div>
 
                             <div class="basic-button-press">
