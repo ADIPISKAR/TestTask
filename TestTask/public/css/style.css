@@ -625,3 +625,9 @@ body{
     object-fit: contain;
 }
 
+.text-click:hover{
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    user-select: none;
+}

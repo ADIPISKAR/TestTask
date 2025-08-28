@@ -1,4 +1,7 @@
         <style>
+        .AccardeonBlock.open > .d-flex > .basic-bold-text-20 {
+            color: #0DA3FF;
+        }
         .accordion-content {
             max-height: 0;
             overflow: hidden;
@@ -712,7 +715,7 @@
 
                             <div class="AccardeonBlock">
                                 <div class="d-flex flex-row justify-between align-items-center">
-                                    <p class="basic-bold-text-20">Когда нужно обращаться в наркологическую клинику?</p>
+                                    <p class="basic-bold-text-20">Сколько ждать приезда врача?</p>
                                     <span class="accordion-toggle-wrap">
                                         <img src="{{ asset('images/pls.png') }}" class="accordion-toggle" style="display:inline;">
                                         <img src="http://127.0.0.1:8000/images/mns.png" class="accordion-toggle-minus" style="display:none;">
@@ -725,7 +728,7 @@
 
                             <div class="AccardeonBlock">
                                 <div class="d-flex flex-row justify-between align-items-center">
-                                    <p class="basic-bold-text-20">Когда нужно обращаться в наркологическую клинику?</p>
+                                    <p class="basic-bold-text-20">Какие методики используются для лечения?</p>
                                     <span class="accordion-toggle-wrap">
                                         <img src="{{ asset('images/pls.png') }}" class="accordion-toggle" style="display:inline;">
                                         <img src="http://127.0.0.1:8000/images/mns.png" class="accordion-toggle-minus" style="display:none;">
@@ -738,7 +741,7 @@
 
                             <div class="AccardeonBlock">
                                 <div class="d-flex flex-row justify-between align-items-center">
-                                    <p class="basic-bold-text-20">Когда нужно обращаться в наркологическую клинику?</p>
+                                    <p class="basic-bold-text-20">Как сохранить анонимность при обращении?</p>
                                     <span class="accordion-toggle-wrap">
                                         <img src="{{ asset('images/pls.png') }}" class="accordion-toggle" style="display:inline;">
                                         <img src="http://127.0.0.1:8000/images/mns.png" class="accordion-toggle-minus" style="display:none;">
@@ -751,7 +754,7 @@
 
                             <div class="AccardeonBlock">
                                 <div class="d-flex flex-row justify-between align-items-center">
-                                    <p class="basic-bold-text-20">Когда нужно обращаться в наркологическую клинику?</p>
+                                    <p class="basic-bold-text-20">Как сохранить анонимность при обращении?</p>
                                     <span class="accordion-toggle-wrap">
                                         <img src="{{ asset('images/pls.png') }}" class="accordion-toggle" style="display:inline;">
                                         <img src="http://127.0.0.1:8000/images/mns.png" class="accordion-toggle-minus" style="display:none;">
@@ -764,15 +767,17 @@
                         </div>
                         <script>
                         // Аккордеон с анимацией
-                        document.querySelectorAll('.AccardeonBlock').forEach(block => {
+                        document.querySelectorAll('.AccardeonBlock').forEach((block, idx) => {
                             const wrap = block.querySelector('.accordion-toggle-wrap');
                             const plus = wrap ? wrap.querySelector('.accordion-toggle') : null;
                             const minus = wrap ? wrap.querySelector('.accordion-toggle-minus') : null;
                             const content = block.querySelector('.accordion-content');
+                            const question = block.querySelector('.basic-bold-text-20');
                             if (plus && minus) {
                                 plus.addEventListener('click', e => {
                                     e.stopPropagation();
                                     content.classList.toggle('open');
+                                    block.classList.toggle('open');
                                     if (content.classList.contains('open')) {
                                         plus.style.display = 'none';
                                         minus.style.display = 'inline';
@@ -784,6 +789,7 @@
                                 minus.addEventListener('click', e => {
                                     e.stopPropagation();
                                     content.classList.remove('open');
+                                    block.classList.remove('open');
                                     plus.style.display = 'inline';
                                     minus.style.display = 'none';
                                 });
@@ -872,7 +878,7 @@
                                 <div class="d-flex flex-column" style="gap: 10px;">
                                     <p class="basic-bold-text-20">${r.name}</p>
                                     <p class="basic-normal-text">${r.text}</p>
-                                    ${r.read ? '<p class="basic-normal-text" style="color: #0DA3FF;">Читать полностью</p>' : ''}
+                                    ${r.read ? '<p class="basic-normal-text text-click" style="color: #0DA3FF;">Читать полностью</p>' : ''}
                                 </div>
                                 <p class="basic-normal-text" style="color: #7192A9;">${r.date}</p>
                             `;
