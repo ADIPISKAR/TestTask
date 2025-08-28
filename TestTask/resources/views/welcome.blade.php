@@ -1,3 +1,12 @@
+        <style>
+        .fade-text {
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .fade-text.show {
+            opacity: 1;
+        }
+        </style>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -460,12 +469,17 @@
                 <div style="width: max-content;" class="d-flex flex-column justify-between">
                     <div>
                         <p class="basic-big-text-52 mb-4">Медицинский <br> персонал</p>
-
                         <div class="BlockAboutPersonal">
-                            <p class="basic-bold-text-24">Меринов Артём Вячеславович</p>
+                            <p class="basic-bold-text-24 fade-text show" id="personalName">Меринов Артём Вячеславович</p>
                             <div style="gap: 5px;" class="d-flex flex-column">
-                                <div class="d-flex flex-row" style="gap: 5px;"><p class="basic-normal-text" style="color: #3838388C;">Cпециализация:<p class="basic-bold-text-16" style="color: #0DA3FF">Врач-Нарколог</p></div>
-                                <div class="d-flex flex-row" style="gap: 5px;"><p class="basic-normal-text" style="color: #3838388C;">Опыт работы:<p class="basic-bold-text-16" style="color: #0DA3FF">12 лет</p></div>
+                                <div class="d-flex flex-row" style="gap: 5px;">
+                                    <p class="basic-normal-text" style="color: #3838388C;">Cпециализация:</p>
+                                    <p class="basic-bold-text-16 fade-text show" style="color: #0DA3FF" id="personalSpec">Врач-Нарколог</p>
+                                </div>
+                                <div class="d-flex flex-row" style="gap: 5px;">
+                                    <p class="basic-normal-text" style="color: #3838388C;">Опыт работы:</p>
+                                    <p class="basic-bold-text-16 fade-text show" style="color: #0DA3FF" id="personalExp">12 лет</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -481,37 +495,118 @@
                 </div>
 
                 <div class="MedPhotos" id="medPhotos">
-                    <img src="{{ asset('images/Med1.jpg') }}">
-                    <img src="{{ asset('images/Med2.jpg') }}">
-                    <img src="{{ asset('images/Med3.jpg') }}">
-                    <img src="{{ asset('images/Med1.jpg') }}">
+                    <!-- Фото будут рендериться динамически -->
                 </div>
-        <script>
-        const medPhotos = document.getElementById('medPhotos');
-        const medPrevBtn = document.getElementById('medPrevBtn');
-        const medNextBtn = document.getElementById('medNextBtn');
-
-        function slideLeft() {
-            medPhotos.classList.add('slide-left');
-            setTimeout(() => {
-                medPhotos.appendChild(medPhotos.firstElementChild);
-                medPhotos.classList.remove('slide-left');
-            }, 500);
-        }
-
-        function slideRight() {
-            medPhotos.classList.add('slide-right');
-            setTimeout(() => {
-                medPhotos.insertBefore(medPhotos.lastElementChild, medPhotos.firstElementChild);
-                medPhotos.classList.remove('slide-right');
-            }, 500);
-        }
-
-        medNextBtn.addEventListener('click', slideLeft);
-        medPrevBtn.addEventListener('click', slideRight);
-        </script>
             </div>
         </div>
+
+        <script>
+            // Данные о персонале
+            const personals = [
+                {
+                    name: 'Меринов Артём Вячеславович',
+                    spec: 'Врач-Нарколог',
+                    exp: '12 лет',
+                    img: '/images/Med1.jpg'
+                },
+                {
+                    name: 'Иванова Светлана Петровна',
+                    spec: 'Психиатр-Нарколог',
+                    exp: '8 лет',
+                    img: '/images/Med2.jpg'
+                },
+                {
+                    name: 'Петров Алексей Сергеевич',
+                    spec: 'Врач-Реаниматолог',
+                    exp: '15 лет',
+                    img: '/images/Med3.jpg'
+                },
+                {
+                    name: 'Сидорова Мария Ивановна',
+                    spec: 'Врач-Нарколог',
+                    exp: '10 лет',
+                    img: '/images/Med2.jpg'
+                }
+            ];
+
+            let medIndex = 0;
+            const medPhotos = document.getElementById('medPhotos');
+            const medPrevBtn = document.getElementById('medPrevBtn');
+            const medNextBtn = document.getElementById('medNextBtn');
+            const personalName = document.getElementById('personalName');
+            const personalSpec = document.getElementById('personalSpec');
+            const personalExp = document.getElementById('personalExp');
+
+            const shift = 120;
+            const duration = 500;
+            let isAnimating = false;
+
+            function renderPhotos() {
+                medPhotos.innerHTML = '';
+                for (let i = 0; i < 4; i++) {
+                    const idx = (medIndex + i) % personals.length;
+                    const img = document.createElement('img');
+                    img.src = personals[idx].img;
+                    medPhotos.appendChild(img);
+                }
+            }
+
+            function updatePersonalInfo() {
+                const p = personals[medIndex % personals.length];
+                // Анимация исчезновения
+                personalName.classList.remove('show');
+                personalSpec.classList.remove('show');
+                personalExp.classList.remove('show');
+                setTimeout(() => {
+                    personalName.textContent = p.name;
+                    personalSpec.textContent = p.spec;
+                    personalExp.textContent = p.exp;
+                    // Анимация появления
+                    personalName.classList.add('show');
+                    personalSpec.classList.add('show');
+                    personalExp.classList.add('show');
+                }, 250);
+            }
+
+            function slideLeft() {
+                if (isAnimating) return;
+                isAnimating = true;
+                const imgs = medPhotos.querySelectorAll('img');
+                imgs.forEach((img, i) => {
+                    img.style.transition = `transform ${duration}ms cubic-bezier(.4,2,.6,1), opacity ${duration}ms`;
+                    img.style.transform = `translateX(-${shift}px)`;
+                    if (i === 0) img.style.opacity = '0';
+                });
+                setTimeout(() => {
+                    medIndex = (medIndex + 1) % personals.length;
+                    renderPhotos();
+                    updatePersonalInfo();
+                    isAnimating = false;
+                }, duration);
+            }
+
+            function slideRight() {
+                if (isAnimating) return;
+                isAnimating = true;
+                const imgs = medPhotos.querySelectorAll('img');
+                imgs[imgs.length - 1].style.transition = 'none';
+                imgs[imgs.length - 1].style.transform = `translateX(-${shift}px)`;
+                imgs[imgs.length - 1].style.opacity = '0';
+                setTimeout(() => {
+                    medIndex = (medIndex - 1 + personals.length) % personals.length;
+                    renderPhotos();
+                    updatePersonalInfo();
+                    isAnimating = false;
+                }, duration);
+            }
+
+            medNextBtn.addEventListener('click', slideLeft);
+            medPrevBtn.addEventListener('click', slideRight);
+
+            // Инициализация
+            renderPhotos();
+            updatePersonalInfo();
+        </script>
 
         {{-- Блок приемуществ --}}
         <div class="Priemych">
