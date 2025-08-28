@@ -357,41 +357,97 @@
                             </div>
                         </div>
 
-                        <div class="col-6 position-relative">
-                            <img src="{{ asset('images/Carusel1.jpg') }}" class="img-fluid">
+                        <div class="col-6 position-relative image-slider-one">
+                            <img id="sliderImage" src="http://127.0.0.1:8000/images/Carusel1.jpg" class="img-fluid">
 
-                            <div class="ButtonSliderAbsolute">
-                                <div class="Circle">
-                                    <img src="{{ asset('images/strL.png') }}" class="img-fluid">
+                            <div class="ButtonSliderAbsolute d-flex justify-content-between">
+                                <div class="Circle" id="prevBtn">
+                                    <img src="http://127.0.0.1:8000/images/strL.png" class="img-fluid">
                                 </div>
-
-                                <div class="Circle">
-                                    <img src="{{ asset('images/strR.png') }}" class="img-fluid">
+                                <div class="Circle" id="nextBtn">
+                                    <img src="http://127.0.0.1:8000/images/strR.png" class="img-fluid">
                                 </div>
                             </div>
                         </div>
+
+                        <script>
+                            const images = [
+                                "http://127.0.0.1:8000/images/Carusel1.jpg",
+                                "http://127.0.0.1:8000/images/Carusel2.jpg"
+                            ];
+
+                            let currentIndex = 0;
+                            const sliderImage = document.getElementById("sliderImage");
+                            const prevBtn = document.getElementById("prevBtn");
+                            const nextBtn = document.getElementById("nextBtn");
+
+                            function changeImage(newIndex) {
+                                sliderImage.classList.add("fade-out");
+                                setTimeout(() => {
+                                    currentIndex = newIndex;
+                                    sliderImage.src = images[currentIndex];
+                                    sliderImage.classList.remove("fade-out");
+                                }, 500);
+                            }
+
+                            nextBtn.addEventListener("click", () => {
+                                let newIndex = (currentIndex + 1) % images.length;
+                                changeImage(newIndex);
+                            });
+
+                            prevBtn.addEventListener("click", () => {
+                                let newIndex = (currentIndex - 1 + images.length) % images.length;
+                                changeImage(newIndex);
+                            });
+                        </script>
                     </div>
 
                     <div class="mt-5">
                         <p class="basic-bold-text-24">Имеем все необходимые документы для предоставления медицинских услуг:</p>
 
-                        <div class="row mt-4">
-                            <div class="col-3">
-                                <img src="{{ asset('images/Doc1.jpg') }}">
+                        <div class="row mt-4 gallery">
+                            <div class="col-3 gallery-item position-relative">
+                                <img src="{{ asset('images/Doc1.jpg') }}" class="img-fluid">
+                                <div class="Circle plus-circle">+</div>
                             </div>
 
-                            <div class="col-3">
-                                <img src="{{ asset('images/Doc2.jpg') }}">
+                            <div class="col-3 gallery-item position-relative">
+                                <img src="{{ asset('images/Doc2.jpg') }}" class="img-fluid">
+                                <div class="Circle plus-circle">+</div>
                             </div>
 
-                            <div class="col-3">
-                                <img src="{{ asset('images/Doc3.jpg') }}">
+                            <div class="col-3 gallery-item position-relative">
+                                <img src="{{ asset('images/Doc3.jpg') }}" class="img-fluid">
+                                <div class="Circle plus-circle">+</div>
                             </div>
 
-                            <div class="col-3">
-                                <img src="{{ asset('images/Doc4.jpg') }}">
+                            <div class="col-3 gallery-item position-relative">
+                                <img src="{{ asset('images/Doc4.jpg') }}" class="img-fluid">
+                                <div class="Circle plus-circle">+</div>
                             </div>
                         </div>
+
+                        <div id="imageModal" class="modal-overlay">
+                            <img id="modalImage" src="">
+                        </div>
+
+                        <script>
+                            const modal = document.getElementById("imageModal");
+                            const modalImg = document.getElementById("modalImage");
+                            const plusCircles = document.querySelectorAll(".plus-circle");
+
+                            plusCircles.forEach(circle => {
+                                circle.addEventListener("click", (e) => {
+                                    const imgSrc = e.target.parentElement.querySelector("img").src;
+                                    modalImg.src = imgSrc;
+                                    modal.style.display = "flex";
+                                });
+                            });
+
+                            modal.addEventListener("click", () => {
+                                modal.style.display = "none";
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
