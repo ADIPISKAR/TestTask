@@ -1,30 +1,3 @@
-        <style>
-        .AccardeonBlock.open > .d-flex > .basic-bold-text-20 {
-            color: #0DA3FF;
-        }
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(.4,2,.6,1), opacity 0.4s;
-            opacity: 0;
-        }
-        .accordion-content.open {
-            opacity: 1;
-            max-height: 500px;
-        }
-        .AccardeonBlock {
-            cursor: pointer;
-        }
-        </style>
-        <style>
-        .fade-text {
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-        .fade-text.show {
-            opacity: 1;
-        }
-        </style>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -38,6 +11,11 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     </head>
 
     <body>
@@ -48,8 +26,8 @@
 
         {{-- Хейдер --}}
         <div class="container">
-            <div class="d-flex flex-row justify-content-between align-items-center p-3">
-                <img src="{{ asset('images/logo.png') }}" alt="Логотип">
+            <div class="PredLogoDiv">
+                <img src="{{ asset('images/logo.png') }}" class="LogoImg" alt="Логотип">
 
                 <div class="SideBar">
                     <p class="basic-normal-text anim-blue" >Услуги</p>
@@ -64,8 +42,12 @@
                         <p class="basic-bold-text-18" style="color: #0DA3FF;">8 (906) 180-00-41</p>
                         <p class="basic-regular-text" style="color: #3838388C;">Работаем 24/7</p>
                     </div>
-                    <div class="basic-button">
+                    <div class="basic-button HeaderButton">
                         <p class="basic-bold-text-16" style="color: #FFFFFF;"> Заказать звонок</p>
+                    </div>
+                    
+                    <div class="GamburgerBlock">
+                        <img src="{{ asset('images/Gamburger.png') }}">
                     </div>
                 </div>
             </div>
@@ -74,29 +56,29 @@
         {{-- Встречный блок --}}
         <div class="BlockMain">
             <div class="container">
-                <div class="d-flex flex-row justify-content-between">
-                    <div class="d-flex flex-column justify-content-center w-max-content" style="gap: 60px;">
+                <div class="D-flex_row justify-content-between">
+                    <div class=" BlockMainDiv">
                         <div class="d-flex flex-column" style="gap: 20px;">
                             <p class="basic-big-text-62">Срочный вызов <br> врача-нарколога</p>
 
-                            <div class="d-flex flex-column" style="gap: 5px; margin-t">
+                            <div class="LineHeaderBlock">
                                 <div class="d-flex flex-row" style="gap: 10px;">
-                                    <img src="{{ asset('images/ci_check-all.png') }}" alt="Логотип">
+                                    <img style="max-height: 25px; max-width: 25px;" src="{{ asset('images/ci_check-all.png') }}" alt="Логотип">
                                     <p class="basic-normal-text">Сохраняем анонимность, не требуем паспорт и не ставим на учёт</p>
                                 </div>
 
                                 <div class="d-flex flex-row" style="gap: 10px;">
-                                    <img src="{{ asset('images/ci_check-all.png') }}" alt="Логотип">
+                                    <img style="max-height: 25px; max-width: 25px;" src="{{ asset('images/ci_check-all.png') }}" alt="Логотип">
                                     <p class="basic-normal-text">Помощь квалифицированного врача на дому</p>
                                 </div>
 
                                 <div class="d-flex flex-row" style="gap: 10px;">
-                                    <img src="{{ asset('images/ci_check-all.png') }}" alt="Логотип">
+                                    <img style="max-height: 25px; max-width: 25px;" src="{{ asset('images/ci_check-all.png') }}" alt="Логотип">
                                     <p class="basic-normal-text">Приедем на адрес за 20 минут</p>
                                 </div>
 
                                 <div class="d-flex flex-row" style="gap: 10px;">
-                                    <img src="{{ asset('images/ci_check-all.png') }}" alt="Логотип">
+                                    <img style="max-height: 25px; max-width: 25px;" src="{{ asset('images/ci_check-all.png') }}" alt="Логотип">
                                     <p class="basic-normal-text">Первичная консультация - бесплатно</p>
                                 </div>
                             </div>
@@ -113,8 +95,8 @@
                         </div>
                     </div>
 
-                    <div class="d-flex align-items-end" style="overflow: hidden;" >
-                        <img style="height: 90%; position: relative;" src="{{ asset('images/Woman.png') }}">
+                    <div class="PredWomanImg">
+                        <img class="WomanImg" src="{{ asset('images/Woman.png') }}">
                     </div>
                 </div>
             </div>
@@ -125,140 +107,154 @@
             <div class="container">
                 <div class="Services">
                     
-                    <div>
-                        <p class="basic-big-text-52 mb-4">Наши услуги</p>
+                    <p class="basic-big-text-52 mb-4">Наши услуги</p>
 
-                        <div style="gap: 20px;" class="d-flex flex-column">
-                            <div class="BlockLine">
-                                <div class="Block">
-                                    <img src="{{ asset('images/Services1.jpg') }}">
+                    <div style="gap: 20px;" class="d-flex flex-column">
+                        <div class="BlockLine">
+                            <div class="row CartBlock">
+                                <div class="col-11 col-md-4 col-lg-4">
+                                    <div class="Block">
+                                        <img class="ImgServices" src="{{ asset('images/Services1.jpg') }}">
 
-                                    <div class="p-4" style="display: flex; flex-direction: column; gap: 40px;">
-                                        <div>
-                                            <p class="basic-bold-text-24">Cтандартная терапия</p>
-                                            <p class="basic-normal-text" style="color: #383838BF">Для облегчения похмельного синдрома и прерывания запоя. А также при алкогольном отравлении</p>
-                                        </div>
-
-                                        <div class="ButtonServices">
-                                            
-                                            <div class="w-100 d-flex justify-content-center align-items-center">
-                                                <p class="basic-bold-text-16" style="color: #0DA3FF;"> от 2400 ₽ </p>
+                                        <div class="BlockDivOurServices">
+                                            <div class="MegdText">
+                                                <p class="basic-bold-text-24">Cтандартная терапия</p>
+                                                <p class="basic-normal-text" style="color: #383838BF">Для облегчения похмельного синдрома и прерывания запоя. А также при алкогольном отравлении</p>
                                             </div>
 
-                                            <div class="ButtonServicesInside">
-                                                <p class="basic-bold-text-16" style="color: white; white-space: nowrap;">Начать лечение</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                            <div class="ButtonServices">
+                                                
+                                                <div class="w-100 d-flex justify-content-center align-items-center">
+                                                    <p class="basic-bold-text-16" style="color: #0DA3FF;"> от 2400 ₽ </p>
+                                                </div>
 
-                                <div class="Block">
-                                    <img src="{{ asset('images/Services2.jpg') }}">
-                                    
-                                    <div class="p-4" style="display: flex; flex-direction: column; gap: 40px;">
-                                        <div>
-                                            <p class="basic-bold-text-24">Cтандартная терапия</p>
-                                            <p class="basic-normal-text" style="color: #383838BF">Для облегчения похмельного синдрома и прерывания запоя. А также при алкогольном отравлении</p>
-                                        </div>
-
-                                        <div class="ButtonServices">
-                                            
-                                            <div class="w-100 d-flex justify-content-center align-items-center">
-                                                <p class="basic-bold-text-16" style="color: #0DA3FF;"> от 2400 ₽ </p>
-                                            </div>
-
-                                            <div class="ButtonServicesInside">
-                                                <p class="basic-bold-text-16" style="color: white; white-space: nowrap;">Начать лечение</p>
+                                                <div class="ButtonServicesInside">
+                                                    <p class="basic-bold-text-16" style="color: white; white-space: nowrap;">Начать лечение</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="Block">
-                                    <img src="{{ asset('images/Services3.jpg') }}">
+                                <div class="col-11 col-md-4 col-lg-4">
+                                    <div class="Block">
+                                        <img class="ImgServices" src="{{ asset('images/Services2.jpg') }}">
                                     
-                                    <div class="p-4" style="display: flex; flex-direction: column; gap: 40px;">
-                                        <div>
-                                            <p class="basic-bold-text-24">Cтандартная терапия</p>
-                                            <p class="basic-normal-text" style="color: #383838BF">Для облегчения похмельного синдрома и прерывания запоя. А также при алкогольном отравлении</p>
-                                        </div>
-
-                                        <div class="ButtonServices">
-                                            
-                                            <div class="w-100 d-flex justify-content-center align-items-center">
-                                                <p class="basic-bold-text-16" style="color: #0DA3FF;"> от 2400 ₽ </p>
+                                        <div class="BlockDivOurServices">
+                                            <div class="MegdText">
+                                                <p class="basic-bold-text-24">Cтандартная терапия</p>
+                                                <p class="basic-normal-text" style="color: #383838BF">Для облегчения похмельного синдрома и прерывания запоя. А также при алкогольном отравлении</p>
                                             </div>
 
-                                            <div class="ButtonServicesInside">
-                                                <p class="basic-bold-text-16" style="color: white; white-space: nowrap;">Начать лечение</p>
+                                            <div class="ButtonServices">
+                                                
+                                                <div class="w-100 d-flex justify-content-center align-items-center">
+                                                    <p class="basic-bold-text-16" style="color: #0DA3FF;"> от 2400 ₽ </p>
+                                                </div>
+
+                                                <div class="ButtonServicesInside">
+                                                    <p class="basic-bold-text-16" style="color: white; white-space: nowrap;">Начать лечение</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-11 col-md-4 col-lg-4">
+                                    <div class="Block">
+                                        <img class="ImgServices" src="{{ asset('images/Services3.jpg') }}">
+                                    
+                                        <div class="BlockDivOurServices">
+                                            <div class="MegdText">
+                                                <p class="basic-bold-text-24">Cтандартная терапия</p>
+                                                <p class="basic-normal-text" style="color: #383838BF">Для облегчения похмельного синдрома и прерывания запоя. А также при алкогольном отравлении</p>
+                                            </div>
+
+                                            <div class="ButtonServices">
+                                                
+                                                <div class="w-100 d-flex justify-content-center align-items-center">
+                                                    <p class="basic-bold-text-16" style="color: #0DA3FF;"> от 2400 ₽ </p>
+                                                </div>
+
+                                                <div class="ButtonServicesInside">
+                                                    <p class="basic-bold-text-16" style="color: white; white-space: nowrap;">Начать лечение</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="BlockLine">
-                                <div class="Block">
-                                    <img src="{{ asset('images/Services4.jpg') }}">
+                        <div class="BlockLine">
+                            <div class="row CartBlock">
+                                <div class="col-11 col-md-4 col-lg-4">
+                                    <div class="Block">
+                                        <img class="ImgServices" src="{{ asset('images/Services4.jpg') }}">
 
-                                    <div class="p-4" style="display: flex; flex-direction: column; gap: 40px;">
-                                        <div>
-                                            <p class="basic-bold-text-24">Cтандартная терапия</p>
-                                            <p class="basic-normal-text" style="color: #383838BF">Для облегчения похмельного синдрома и прерывания запоя. А также при алкогольном отравлении</p>
-                                        </div>
-
-                                        <div class="ButtonServices">
-                                            
-                                            <div class="w-100 d-flex justify-content-center align-items-center">
-                                                <p class="basic-bold-text-16" style="color: #0DA3FF;"> от 2400 ₽ </p>
+                                        <div class="BlockDivOurServices">
+                                            <div class="MegdText">
+                                                <p class="basic-bold-text-24">Cтандартная терапия</p>
+                                                <p class="basic-normal-text" style="color: #383838BF">Для облегчения похмельного синдрома и прерывания запоя. А также при алкогольном отравлении</p>
                                             </div>
 
-                                            <div class="ButtonServicesInside">
-                                                <p class="basic-bold-text-16" style="color: white; white-space: nowrap;">Начать лечение</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                            <div class="ButtonServices">
+                                                
+                                                <div class="w-100 d-flex justify-content-center align-items-center">
+                                                    <p class="basic-bold-text-16" style="color: #0DA3FF;"> от 2400 ₽ </p>
+                                                </div>
 
-                                <div class="Block">
-                                    <img src="{{ asset('images/Services5.jpg') }}">
-                                    
-                                    <div class="p-4" style="display: flex; flex-direction: column; gap: 40px;">
-                                        <div>
-                                            <p class="basic-bold-text-24">Cтандартная терапия</p>
-                                            <p class="basic-normal-text" style="color: #383838BF">Для облегчения похмельного синдрома и прерывания запоя. А также при алкогольном отравлении</p>
-                                        </div>
-
-                                        <div class="ButtonServices">
-                                            
-                                            <div class="w-100 d-flex justify-content-center align-items-center">
-                                                <p class="basic-bold-text-16" style="color: #0DA3FF;"> от 2400 ₽ </p>
-                                            </div>
-
-                                            <div class="ButtonServicesInside">
-                                                <p class="basic-bold-text-16" style="color: white; white-space: nowrap;">Начать лечение</p>
+                                                <div class="ButtonServicesInside">
+                                                    <p class="basic-bold-text-16" style="color: white; white-space: nowrap;">Начать лечение</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="Block">
-                                    <img src="{{ asset('images/Services6.jpg') }}">
+                                <div class="col-11 col-md-4 col-lg-4">
+                                    <div class="Block">
+                                        <img class="ImgServices" src="{{ asset('images/Services5.jpg') }}">
                                     
-                                    <div class="p-4" style="display: flex; flex-direction: column; gap: 40px;">
-                                        <div>
-                                            <p class="basic-bold-text-24">Cтандартная терапия</p>
-                                            <p class="basic-normal-text" style="color: #383838BF">Для облегчения похмельного синдрома и прерывания запоя. А также при алкогольном отравлении</p>
-                                        </div>
-
-                                        <div class="ButtonServices">
-                                            
-                                            <div class="w-100 d-flex justify-content-center align-items-center">
-                                                <p class="basic-bold-text-16" style="color: #0DA3FF;"> от 2400 ₽ </p>
+                                        <div class="BlockDivOurServices">
+                                            <div class="MegdText">
+                                                <p class="basic-bold-text-24">Cтандартная терапия</p>
+                                                <p class="basic-normal-text" style="color: #383838BF">Для облегчения похмельного синдрома и прерывания запоя. А также при алкогольном отравлении</p>
                                             </div>
 
-                                            <div class="ButtonServicesInside">
-                                                <p class="basic-bold-text-16" style="color: white; white-space: nowrap;">Начать лечение</p>
+                                            <div class="ButtonServices">
+                                                
+                                                <div class="w-100 d-flex justify-content-center align-items-center">
+                                                    <p class="basic-bold-text-16" style="color: #0DA3FF;"> от 2400 ₽ </p>
+                                                </div>
+
+                                                <div class="ButtonServicesInside">
+                                                    <p class="basic-bold-text-16" style="color: white; white-space: nowrap;">Начать лечение</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-11 col-md-4 col-lg-4">
+                                    <div class="Block">
+                                        <img class="ImgServices" src="{{ asset('images/Services6.jpg') }}">
+                                    
+                                        <div class="BlockDivOurServices">
+                                            <div class="MegdText"   >
+                                                <p class="basic-bold-text-24">Cтандартная терапия</p>
+                                                <p class="basic-normal-text" style="color: #383838BF">Для облегчения похмельного синдрома и прерывания запоя. А также при алкогольном отравлении</p>
+                                            </div>
+
+                                            <div class="ButtonServices">
+                                                
+                                                <div class="w-100 d-flex justify-content-center align-items-center">
+                                                    <p class="basic-bold-text-16" style="color: #0DA3FF;"> от 2400 ₽ </p>
+                                                </div>
+
+                                                <div class="ButtonServicesInside">
+                                                    <p class="basic-bold-text-16" style="color: white; white-space: nowrap;">Начать лечение</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -267,8 +263,7 @@
                         </div>
                     </div>
 
-
-                    <div style="margin: 100px 0px;">
+                    <div class="EtapLech">
                         <p class="basic-big-text-52">Этапы лечения</p>
 
                         <div class="HorizontalBlock">
@@ -282,7 +277,7 @@
                                 </div>
 
                                 <div class="d-flex flex-row align-items-center" style="gap: 10px">
-                                <img src="{{ asset('images/Icon1.png') }}" style="width: 50px; height: 50px;">
+                                <img src="{{ asset('images/Icon1.png') }}" class="IconLine">
                                 <p class="basic-regular-text-16">Диагностика <br> состояния</p>
                                 </div>
                             </div>
@@ -297,7 +292,7 @@
                                 </div>
 
                                 <div class="d-flex flex-row align-items-center" style="gap: 10px">
-                                <img src="{{ asset('images/Icon2.png') }}" style="width: 50px; height: 50px;">
+                                <img src="{{ asset('images/Icon2.png') }}" class="IconLine">
                                 <p class="basic-regular-text-16">Составление <br> плана лечения</p>
                                 </div>
                             </div>
@@ -312,7 +307,7 @@
                                 </div>
 
                                 <div class="d-flex flex-row align-items-center" style="gap: 10px">
-                                <img src="{{ asset('images/Icon3.png') }}" style="width: 50px; height: 50px;">
+                                <img src="{{ asset('images/Icon3.png') }}" class="IconLine">
                                 <p class="basic-regular-text-16">Снятие <br> симптомов</p>
                                 </div>
                             </div>
@@ -327,8 +322,8 @@
                                 </div>
 
                                 <div class="d-flex flex-row align-items-center" style="gap: 10px">
-                                <img src="{{ asset('images/Icon4.png') }}" style="width: 50px; height: 50px;">
-                                <p class="basic-regular-text-16">ДиВосстановление <br> организма</p>
+                                <img src="{{ asset('images/Icon4.png') }}" class="IconLine">
+                                <p class="basic-regular-text-16">Восстановление <br> организма</p>
                                 </div>
                             </div>
 
@@ -342,8 +337,48 @@
                                 </div>
 
                                 <div class="d-flex flex-row align-items-center" style="gap: 10px">
-                                <img src="{{ asset('images/Icon5.png') }}" style="width: 50px; height: 50px;">
+                                <img src="{{ asset('images/Icon5.png') }}" class="IconLine">
                                 <p class="basic-regular-text-16">Бесплатные <br> консультации</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="HorizontalBlockMob">
+                            <div class="container">
+                                <div class="HorizontalBlockLineMob">
+                                    <div class="MobVersionLineBlock">
+                                        <img src="{{ asset('images/Icon1.png') }}" class="IconLine">
+                                        <p class="basic-regular-text-16">Диагностика <br> состояния</p>
+                                    </div>
+
+                                    <p class="basic-big-text-grey" style="color: #E8EFF3;">01</p>
+                                </div>
+
+                                <div class="HorizontalBlockLineMob">
+                                    <div class="MobVersionLineBlock">
+                                        <img src="{{ asset('images/Icon2.png') }}" class="IconLine">
+                                        <p class="basic-regular-text-16">Диагностика <br> состояния</p>
+                                    </div>
+
+                                    <p class="basic-big-text-grey" style="color: #E8EFF3;">01</p>
+                                </div>
+
+                                <div class="HorizontalBlockLineMob">
+                                    <div class="MobVersionLineBlock">
+                                        <img src="{{ asset('images/Icon3.png') }}" class="IconLine">
+                                        <p class="basic-regular-text-16">Диагностика <br> состояния</p>
+                                    </div>
+
+                                    <p class="basic-big-text-grey" style="color: #E8EFF3;">01</p>
+                                </div>
+
+                                <div class="HorizontalBlockLineMob">
+                                    <div class="MobVersionLineBlock">
+                                        <img src="{{ asset('images/Icon4.png') }}" class="IconLine">
+                                        <p class="basic-regular-text-16">Диагностика <br> состояния</p>
+                                    </div>
+
+                                    <p class="basic-big-text-grey" style="color: #E8EFF3;">01</p>
                                 </div>
                             </div>
                         </div>
@@ -356,81 +391,167 @@
         <div class="AboutBlock">
             <div class="container">
                 <div class="row">
-                    <div style="border-bottom: 1px solid #DDEBF4; padding: 60px 0px;" class="d-flex flex-row">
-                        <div class="col-6 d-flex flex-column" style="gap: 20px; padding: 0px 20px 0px 0px;">
-                            <p class="basic-big-text-52">О клинике</p>
-                            <p class="basic-normal-text">Наши квалифицированные врачи и наркологи предлагают широкий спектр наркологических услуг, включая стационарное лечение, кодирование, и многие другие виды лечения. Мы заботимся о каждом пациенте и гарантируем высокое качество нашей работы. Не стесняйтесь обращаться к нам в любое время, мы всегда готовы оказать наркологическую помощь.</p>
+                    {{-- AboutBlockMarg --}}
 
-                            <div style="gap: 10px;" class="d-flex flex-column">
-                                <div class="d-flex direction-row align-items-center" style="gap: 10px;">
-                                    <img src="{{ asset('images/MiniIcon1.png') }}">
-                                    <p class="basic-normal-text">Квалифицированные врачи-наркологи</p>
-                                </div>
-
-                                <div class="d-flex direction-row align-items-center" style="gap: 10px;">
-                                    <img src="{{ asset('images/MiniIcon2.png') }}">
-                                    <p class="basic-normal-text">Квалифицированные врачи-наркологи</p>
-                                </div>
-
-                                <div class="d-flex direction-row align-items-center" style="gap: 10px;">
-                                    <img src="{{ asset('images/MiniIcon3.png') }}">
-                                    <p class="basic-normal-text">Квалифицированные врачи-наркологи</p>
-                                </div>
-
-                                <div class="d-flex direction-row align-items-center" style="gap: 10px;">
-                                    <img src="{{ asset('images/MiniIcon4.png') }}">
-                                    <p class="basic-normal-text">Квалифицированные врачи-наркологи</p>
-                                </div>
+                    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                            <img src="http://127.0.0.1:8000/images/Carusel1.jpg" class="d-block w-100 rounded-4 ImageSliderMob" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                            <img src="http://127.0.0.1:8000/images/Carusel2.jpg" class="d-block w-100 rounded-4 ImageSliderMob" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                            <img src="http://127.0.0.1:8000/images/Carusel1.jpg" class="d-block w-100 rounded-4 ImageSliderMob" alt="...">
                             </div>
                         </div>
 
-                        <div class="col-6 position-relative image-slider-one">
-                            <img id="sliderImage" src="http://127.0.0.1:8000/images/Carusel1.jpg" class="img-fluid">
-
-                            <div class="ButtonSliderAbsolute d-flex justify-content-between">
-                                <div class="Circle" id="prevBtn">
-                                    <img src="http://127.0.0.1:8000/images/strL.png" class="img-fluid">
-                                </div>
-                                <div class="Circle" id="nextBtn">
-                                    <img src="http://127.0.0.1:8000/images/strR.png" class="img-fluid">
-                                </div>
-                            </div>
+                        <!-- индикаторы (точки снизу) -->
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"></button>
                         </div>
-
-                        <script>
-                            const images = [
-                                "http://127.0.0.1:8000/images/Carusel1.jpg",
-                                "http://127.0.0.1:8000/images/Carusel2.jpg"
-                            ];
-
-                            let currentIndex = 0;
-                            const sliderImage = document.getElementById("sliderImage");
-                            const prevBtn = document.getElementById("prevBtn");
-                            const nextBtn = document.getElementById("nextBtn");
-
-                            function changeImage(newIndex) {
-                                sliderImage.classList.add("fade-out");
-                                setTimeout(() => {
-                                    currentIndex = newIndex;
-                                    sliderImage.src = images[currentIndex];
-                                    sliderImage.classList.remove("fade-out");
-                                }, 500);
-                            }
-
-                            nextBtn.addEventListener("click", () => {
-                                let newIndex = (currentIndex + 1) % images.length;
-                                changeImage(newIndex);
-                            });
-
-                            prevBtn.addEventListener("click", () => {
-                                let newIndex = (currentIndex - 1 + images.length) % images.length;
-                                changeImage(newIndex);
-                            });
-                        </script>
                     </div>
+
+                    <script>
+                        const images = [
+                            "http://127.0.0.1:8000/images/Carusel1.jpg",
+                            "http://127.0.0.1:8000/images/Carusel2.jpg",
+                            "http://127.0.0.1:8000/images/Carusel3.jpg"
+                        ];
+
+                        let currentIndex = 0;
+                        const sliderImage = document.getElementById("sliderImage");
+
+                        function showImage(index) {
+                            if (index < 0) {
+                                currentIndex = images.length - 1;
+                            } else if (index >= images.length) {
+                                currentIndex = 0;
+                            } else {
+                                currentIndex = index;
+                            }
+                            sliderImage.src = images[currentIndex];
+                        }
+
+                        function prevImage() {
+                            showImage(currentIndex - 1);
+                        }
+
+                        function nextImage() {
+                            showImage(currentIndex + 1);
+                        }
+
+                        // автопрокрутка каждые 3 секунды
+                        setInterval(() => {
+                            nextImage();
+                        }, 3000);
+                    </script>
+
+                    <div class="col-12 col-md-6 col-lg-6 PaddingClassTextInCarusel">
+                        <p class="basic-big-text-52">О клинике</p>
+                        <p class="basic-normal-text">Наши квалифицированные врачи и наркологи предлагают широкий спектр наркологических услуг, включая стационарное лечение, кодирование, и многие другие виды лечения. Мы заботимся о каждом пациенте и гарантируем высокое качество нашей работы. Не стесняйтесь обращаться к нам в любое время, мы всегда готовы оказать наркологическую помощь.</p>
+
+                        <div style="gap: 10px;" class="d-flex flex-column">
+                            <div class="d-flex direction-row align-items-center" style="gap: 10px;">
+                                <img src="{{ asset('images/MiniIcon1.png') }}">
+                                <p class="basic-normal-text">Квалифицированные врачи-наркологи</p>
+                            </div>
+
+                            <div class="d-flex direction-row align-items-center" style="gap: 10px;">
+                                <img src="{{ asset('images/MiniIcon2.png') }}">
+                                <p class="basic-normal-text">Квалифицированные врачи-наркологи</p>
+                            </div>
+
+                            <div class="d-flex direction-row align-items-center" style="gap: 10px;">
+                                <img src="{{ asset('images/MiniIcon3.png') }}">
+                                <p class="basic-normal-text">Квалифицированные врачи-наркологи</p>
+                            </div>
+
+                            <div class="d-flex direction-row align-items-center" style="gap: 10px;">
+                                <img src="{{ asset('images/MiniIcon4.png') }}">
+                                <p class="basic-normal-text">Квалифицированные врачи-наркологи</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-6 position-relative image-slider-one">
+                        <img id="sliderImage" src="http://127.0.0.1:8000/images/Carusel1.jpg" class="img-fluid">
+
+                        <div class="ButtonSliderAbsolute d-flex justify-content-between">
+                            <div class="Circle" id="prevBtn">
+                                <img src="http://127.0.0.1:8000/images/strL.png" class="img-fluid">
+                            </div>
+                            <div class="Circle" id="nextBtn">
+                                <img src="http://127.0.0.1:8000/images/strR.png" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        const images = [
+                            "http://127.0.0.1:8000/images/Carusel1.jpg",
+                            "http://127.0.0.1:8000/images/Carusel2.jpg"
+                        ];
+
+                        let currentIndex = 0;
+                        const sliderImage = document.getElementById("sliderImage");
+                        const prevBtn = document.getElementById("prevBtn");
+                        const nextBtn = document.getElementById("nextBtn");
+
+                        function changeImage(newIndex) {
+                            sliderImage.classList.add("fade-out");
+                            setTimeout(() => {
+                                currentIndex = newIndex;
+                                sliderImage.src = images[currentIndex];
+                                sliderImage.classList.remove("fade-out");
+                            }, 500);
+                        }
+
+                        nextBtn.addEventListener("click", () => {
+                            let newIndex = (currentIndex + 1) % images.length;
+                            changeImage(newIndex);
+                        });
+
+                        prevBtn.addEventListener("click", () => {
+                            let newIndex = (currentIndex - 1 + images.length) % images.length;
+                            changeImage(newIndex);
+                        });
+                    </script>
 
                     <div class="mt-5">
                         <p class="basic-bold-text-24">Имеем все необходимые документы для предоставления медицинских услуг:</p>
+
+                        <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                            <img src="{{ asset('images/Doc1.jpg') }}" class="img-fluid rounded-4" />
+                            </div>
+                            <div class="swiper-slide">
+                            <img src="{{ asset('images/Doc2.jpg') }}" class="img-fluid rounded-4" />
+                            </div>
+                            <div class="swiper-slide">
+                            <img src="{{ asset('images/Doc3.jpg') }}" class="img-fluid rounded-4" />
+                            </div>
+                        </div>
+                        </div>
+
+                        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+                        <script>
+                            const swiper = new Swiper(".mySwiper", {
+                            slidesPerView: 1.3,   
+                            spaceBetween: 20,
+                            centeredSlides: true,
+                            loop: true,
+                            loopAdditionalSlides: 1,
+                            autoplay: {
+                                delay: 3000,
+                                disableOnInteraction: false,
+                            },
+                            });
+                        </script>
 
                         <div class="row mt-4 gallery">
                             <div class="col-3 gallery-item position-relative">
@@ -482,9 +603,9 @@
 
         {{-- Блок со слайдером --}}
         <div class="MedPersonal">
-            <div class="container d-flex flex-row" style="gap: 100px;">
+            <div class="container PositionMedPersonal">
                 
-                <div style="width: max-content;" class="d-flex flex-column justify-between">
+                <div class="MainBlockMedPersonal">
                     <div>
                         <p class="basic-big-text-52 mb-4">Медицинский <br> персонал</p>
                         <div class="BlockAboutPersonal">
@@ -500,9 +621,11 @@
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
 
-                    <div class="d-flex flex-row" style="gap: 5px;">
+                    <div class="StrelkLg">
                         <div class="Circle" id="medPrevBtn">
                             <img src="http://127.0.0.1:8000/images/strL.png" class="img-fluid">
                         </div>
@@ -512,14 +635,105 @@
                     </div>
                 </div>
 
-                <div class="MedPhotos" id="medPhotos">
-                    <!-- Фото будут рендериться динамически -->
+                {{-- <div class="CartPersonalMob">
+                    <img class="CartPersonalMobImg" src="http://127.0.0.1:8000/images/Med1.jpg">
+
+                    <div class="BlockAboutPersonalMob">
+                        <p class="basic-bold-text-24 fade-text show" id="personalName">Меринов Артём Вячеславович</p>
+                        <div style="gap: 5px;" class="d-flex flex-column">
+                            <div class="d-flex flex-row" style="gap: 5px;">
+                                <p class="basic-normal-text" style="color: #3838388C;">Cпециализация:</p>
+                                <p class="basic-bold-text-16 fade-text show" style="color: #0DA3FF" id="personalSpec">Врач-Нарколог</p>
+                            </div>
+                            <div class="d-flex flex-row" style="gap: 5px;">
+                                <p class="basic-normal-text" style="color: #3838388C;">Опыт работы:</p>
+                                <p class="basic-bold-text-16 fade-text show" style="color: #0DA3FF" id="personalExp">12 лет</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+
+                <!-- Слайдер -->
+                <style>
+
+                </style>
+                <div class="swiper personalSwiper">
+                    <div class="swiper-wrapper">
+
+                        <!-- Карточка 1 -->
+                        <div class="swiper-slide">
+                            <div class="CartPersonalMob">
+                                <img class="CartPersonalMobImg" src="http://127.0.0.1:8000/images/Med1.jpg">
+                                <div class="BlockAboutPersonalMob">
+                                <p class="basic-bold-text-24">Меринов Артём Вячеславович</p>
+                                <div class="d-flex flex-column" style="gap: 5px;">
+                                    <div class="d-flex flex-row" style="gap: 5px;">
+                                    <p class="basic-normal-text" style="color:#3838388C;">Cпециализация:</p>
+                                    <p class="basic-bold-text-16" style="color:#0DA3FF">Врач-Нарколог</p>
+                                    </div>
+                                    <div class="d-flex flex-row" style="gap: 5px;">
+                                    <p class="basic-normal-text" style="color:#3838388C;">Опыт работы:</p>
+                                    <p class="basic-bold-text-16" style="color:#0DA3FF">12 лет</p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Карточка 2 -->
+                        <div class="swiper-slide">
+                            <div class="CartPersonalMob">
+                                <img class="CartPersonalMobImg" src="http://127.0.0.1:8000/images/Med2.jpg">
+                                <div class="BlockAboutPersonalMob">
+                                <p class="basic-bold-text-24">Иванова Светлана Петровна</p>
+                                <div class="d-flex flex-column" style="gap: 5px;">
+                                    <div class="d-flex flex-row" style="gap: 5px;">
+                                    <p class="basic-normal-text" style="color:#3838388C;">Cпециализация:</p>
+                                    <p class="basic-bold-text-16" style="color:#0DA3FF">Психотерапевт</p>
+                                    </div>
+                                    <div class="d-flex flex-row" style="gap: 5px;">
+                                    <p class="basic-normal-text" style="color:#3838388C;">Опыт работы:</p>
+                                    <p class="basic-bold-text-16" style="color:#0DA3FF">8 лет</p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- точки-индикаторы -->
+                    <div class="swiper-pagination"></div>
                 </div>
+                <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+                <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    if (window.personalSwiperInstance) {
+                        window.personalSwiperInstance.destroy(true, true);
+                    }
+                    window.personalSwiperInstance = new Swiper(".personalSwiper", {
+                        slidesPerView: 1.5, // только чуть выглядывает следующая
+                        spaceBetween: 20,
+                        centeredSlides: true,
+                        loop: true,
+                        autoplay: {
+                            delay: 4000,
+                            disableOnInteraction: false,
+                        },
+                        breakpoints: {
+                            768: { slidesPerView: 1.2 },
+                            1024: { slidesPerView: 1.3 }
+                        }
+                    });
+                });
+                </script>
+
+                <div class="MedPhotos" id="medPhotos">
+                </div>
+                
             </div>
         </div>
 
         <script>
-            // Данные о персонале
             const personals = [
                 {
                     name: 'Меринов Артём Вячеславович',
@@ -630,11 +844,11 @@
         <div class="Priemych">
             <div class="container">
                 <div class="row">
-                    <div class="col-6">
-                        <img style="border-radius: 20px;" src="{{ asset('images/Woman.jpg') }}">
+                    <div class="col-12 col-md-6 col-lg-6 PriemychDivImage">
+                        <img class="WomanJpg" style="" src="{{ asset('images/Woman.jpg') }}">
                     </div>
 
-                    <div class="col-6 d-flex flex-column" style="gap: 50px;">
+                    <div class="col-12 col-md-6 col-lg-6 DivPriemych">
                         <div class="d-flex flex-column" style="gap: 20px;">
                             <p class="basic-big-text-52">Преимущества вызова нарколога</p>
                             <p class="basic-normal-text">Обслуживание наркологом на дому имеет ряд плюсов, особенно для тех, кто боится огласки. В этой ситуации обращение в частную наркологию максимально отвечает интересам пациента или его родственников.</p>
@@ -664,20 +878,20 @@
 
                 <div class="AnswerAnket mt-5">
                     <div class="row ">
-                        <div class="col-6 d-flex flex-column justify-content-center" style="gap: 20px;">
+                        <div class="col-12 col-md-6 col-lg-6 my-flex">
                             <p class="basic-big-text-white" style="color: white;">Больной не хочет <br> лечиться?</p>
                             <p class="basic-normal-text" style="color: white;">Врачами создана эффективная технология мотивации пациентов согласиться на терапию.</p>
                             <p class="basic-normal-text" style="color: white;">Метод показывает высокие результаты — 8 из 10 людей добровольно решаются начать лечение от зависимости.</p>
                         </div>
 
-                        <div class="col-6">
-                            <div class="d-flex flex-column align-items-center"style="padding: 0px 40px; gap: 20px;">
-                                <div class="row">
-                                    <div class='col-6'>
+                        <div class="col-12 col-md-6 col-lg-6">
+                            <div class="AnswerAnketDiv">
+                                <div class="row otstup">
+                                    <div class='col-12 col-md-6 col-lg-6'>
                                         <input type="text" class="InputBlock" placeholder="Ваше имя">
                                     </div>
 
-                                    <div class='col-6'>
+                                    <div class='col-12 col-md-6 col-lg-6'>
                                         <input type="text" class="InputBlock" placeholder="+7 999-999-99-99">
                                     </div>
                                 </div>
@@ -698,7 +912,7 @@
                 <p class="basic-big-text-52 mb-5">Частые вопросы и ответы</p>
 
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-12 col-md-8 col-lg-8">
                         <div class="d-flex flex-column" style="gap: 10px;">
                             <div class="AccardeonBlock">
                                 <div class="d-flex flex-row justify-between align-items-center">
@@ -798,7 +1012,7 @@
                         </script>
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-12 col-md-4 col-lg-4 OtzyvBlock">
                         <div class="ContactFAQ">
                             <p class="basic-bold-text-20">Задайте вопрос специалисту</p>
 
@@ -819,7 +1033,7 @@
                     <div class="d-flex justify-content-between align-items-center mb-5">
                         <p class="basic-big-text-52">Отзывы пациентов</p>
 
-                        <div class="d-flex flex-row" style="gap: 5px;">
+                        <div class="BlockStrlki StrelkLg">
                             <div class="Circle">
                                 <img src="http://127.0.0.1:8000/images/strL.png" class="img-fluid">
                             </div>
@@ -833,46 +1047,133 @@
                     <div class="row" id="reviewsRow">
                         <!-- Отзывы будут рендериться динамически -->
                     </div>
-                    <style>
-                    .review-slide {
-                        transition: transform 0.25s cubic-bezier(.4,2,.6,1), opacity 0.25s;
-                    }
-                    .slide-left {
-                        transform: translateX(-100%);
-                        opacity: 0;
-                    }
-                    .slide-right {
-                        transform: translateX(100%);
-                        opacity: 0;
-                    }
-                    </style>
+
+                    <div class="row" id="reviewsRowMob">
+                    </div>
+
+                    <!-- SwiperJS для мобильных отзывов -->
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+                    <div class="reviewsMobBlock" style="display:none;">
+                        <div class="d-flex flex-column align-items-center">
+                            <div class="swiper reviewsMobSwiper">
+                                <div class="swiper-wrapper" id="reviewsMobSwiperWrapper">
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row justify-content-center align-items-center" style="gap:24px; margin:32px 0 0 0;">
+                                <div class="Circle" id="mobReviewPrev" style="background:#fff;">
+                                    <img src="/images/strL.png" class="img-fluid" style="width:32px;">
+                                </div>
+                                <div class="Circle" id="mobReviewNext" style="background:#fff;">
+                                    <img src="/images/strR.png" class="img-fluid" style="width:32px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+                    
                     <script>
-                    const reviews = [
-                        {
-                            name: 'ИННА',
-                            text: 'Моему сыну 28 лет, но он начал злоупотреблять алкоголем, связался с компанией таких же неприятных ребят, бросил работу. Пришлось выводить его из запоя и отправлять на лечение, реабилитацию. Сотрудники центра сделали для нашей семьи очень многое, они вылечили моего ребенка от зависимости и помогли мне пережить этот сложный период.',
-                            date: '28.04.2023',
-                            read: true
-                        },
-                        {
-                            name: 'АЛИНА',
-                            text: 'Добрый день! В клинику обращались по поводу вывода из запоя, хочу выразить свою благодарность Михаилу и Артуру за профессиональный подход и поддержку, спасибо вам за помощь.',
-                            date: '28.04.2023',
-                            read: false
-                        },
-                        // Можно добавить больше отзывов
-                    ];
-                    let reviewIndex = 0;
-                    const reviewsRow = document.getElementById('reviewsRow');
-                    function renderReviews(animClass = '') {
-                        reviewsRow.innerHTML = '';
-                        for (let i = 0; i < 2; i++) {
-                            const idx = (reviewIndex + i) % reviews.length;
-                            const r = reviews[idx];
+                        // Массив отзывов для мобильной версии
+                        const reviewsMob = [
+                            {
+                                name: 'ИННА',
+                                text: 'Моему сыну 28 лет, но он начал злоупотреблять алкоголем, связался с компанией таких же неприятных ребят, бросил работу. Пришлось выводить его из запоя и отправлять на лечение, реабилитацию. Сотрудники центра сделали для нашей семьи очень многое, они вылечили моего ребенка от зависимости и помогли мне пережить этот сложный период.',
+                                date: '28.04.2023',
+                                read: true
+                            },
+                            {
+                                name: 'АЛИНА',
+                                text: 'Добрый день! В клинику обращались по поводу вывода из запоя, хочу выразить свою благодарность Михаилу и Артуру за профессиональный подход и поддержку, спасибо вам за помощь.',
+                                date: '28.04.2023',
+                                read: false
+                            },
+                            // Можно добавить больше отзывов
+                        ];
+
+                        let reviewsMobSwiperInstance = null;
+
+                        function renderMobSwiperReviews() {
+                            const wrapper = document.getElementById('reviewsMobSwiperWrapper');
+                            if (!wrapper) return;
+                            wrapper.innerHTML = '';
+                            reviewsMob.forEach(r => {
+                                const slide = document.createElement('div');
+                                slide.className = 'swiper-slide';
+                                slide.innerHTML = `
+                                    <div class='BlockOtzyv'>
+                                        <img src='/images/skoba.png'>
+                                        <div class='d-flex flex-column' style='gap: 10px;'>
+                                            <p class='basic-bold-text-20'>${r.name}</p>
+                                            <p class='basic-normal-text'>${r.text}</p>
+                                            ${r.read ? "<p class='basic-normal-text text-click' style='color: #0DA3FF;'>Читать полностью</p>" : ''}
+                                        </div>
+                                        <p class='basic-normal-text' style='color: #7192A9;'>${r.date}</p>
+                                    </div>
+                                `;
+                                wrapper.appendChild(slide);
+                            });
+                        }
+
+                        function showMobSwiperIfNeeded() {
+                            const mobBlock = document.querySelector('.reviewsMobBlock');
+                            const reviewsRowMob = document.getElementById('reviewsRowMob');
+                            if (window.innerWidth < 768) {
+                                if (mobBlock) mobBlock.style.display = '';
+                                if (reviewsRowMob) reviewsRowMob.style.display = 'none';
+                                renderMobSwiperReviews();
+                                if (reviewsMobSwiperInstance) reviewsMobSwiperInstance.destroy(true, true);
+                                reviewsMobSwiperInstance = new Swiper('.reviewsMobSwiper', {
+                                    slidesPerView: 1,
+                                    spaceBetween: 12,
+                                    loop: true,
+                                });
+                                // Стрелки
+                                setTimeout(() => {
+                                    const prevBtn = document.getElementById('mobReviewPrev');
+                                    const nextBtn = document.getElementById('mobReviewNext');
+                                    if (prevBtn && nextBtn && reviewsMobSwiperInstance) {
+                                        prevBtn.onclick = () => reviewsMobSwiperInstance.slidePrev();
+                                        nextBtn.onclick = () => reviewsMobSwiperInstance.slideNext();
+                                    }
+                                }, 100);
+                            } else {
+                                if (mobBlock) mobBlock.style.display = 'none';
+                                if (reviewsRowMob) reviewsRowMob.style.display = '';
+                                if (reviewsMobSwiperInstance) reviewsMobSwiperInstance.destroy(true, true);
+                            }
+                        }
+                        window.addEventListener('DOMContentLoaded', showMobSwiperIfNeeded);
+                        window.addEventListener('resize', showMobSwiperIfNeeded);
+                    </script>
+                    </div>
+
+                    <script>
+                        // Массив отзывов для мобильной версии
+                        const reviewsMob = [
+                            {
+                                name: 'ИННА',
+                                text: 'Моему сыну 28 лет, но он начал злоупотреблять алкоголем, связался с компанией таких же неприятных ребят, бросил работу. Пришлось выводить его из запоя и отправлять на лечение, реабилитацию. Сотрудники центра сделали для нашей семьи очень многое, они вылечили моего ребенка от зависимости и помогли мне пережить этот сложный период.',
+                                date: '28.04.2023',
+                                read: true
+                            },
+                            {
+                                name: 'АЛИНА',
+                                text: 'Добрый день! В клинику обращались по поводу вывода из запоя, хочу выразить свою благодарность Михаилу и Артуру за профессиональный подход и поддержку, спасибо вам за помощь.',
+                                date: '28.04.2023',
+                                read: false
+                            },
+                            // Можно добавить больше отзывов
+                        ];
+
+                        function renderMobileReview() {
+                            const reviewsRowMob = document.getElementById('reviewsRowMob');
+                            if (!reviewsRowMob) return;
+                            reviewsRowMob.innerHTML = '';
+                            // Показываем только первый отзыв
+                            const r = reviewsMob[0];
                             const col = document.createElement('div');
-                            col.className = 'col-6';
+                            col.className = 'col-12';
                             const block = document.createElement('div');
-                            block.className = 'BlockOtzyv review-slide' + (animClass ? ' ' + animClass : '');
+                            block.className = 'BlockOtzyv';
                             block.innerHTML = `
                                 <img src="/images/skoba.png">
                                 <div class="d-flex flex-column" style="gap: 10px;">
@@ -883,48 +1184,101 @@
                                 <p class="basic-normal-text" style="color: #7192A9;">${r.date}</p>
                             `;
                             col.appendChild(block);
-                            reviewsRow.appendChild(col);
+                            reviewsRowMob.appendChild(col);
                         }
-                    }
-                    function slideReviewsLeft() {
-                        const blocks = reviewsRow.querySelectorAll('.review-slide');
-                        blocks.forEach(b => b.classList.add('slide-left'));
-                        setTimeout(() => {
-                            reviewIndex = (reviewIndex + 1) % reviews.length;
-                            renderReviews('slide-right');
-                            setTimeout(() => {
-                                const newBlocks = reviewsRow.querySelectorAll('.review-slide');
-                                newBlocks.forEach(b => b.classList.remove('slide-right'));
-                            }, 20);
-                        }, 250);
-                    }
-                    function slideReviewsRight() {
-                        const blocks = reviewsRow.querySelectorAll('.review-slide');
-                        blocks.forEach(b => b.classList.add('slide-right'));
-                        setTimeout(() => {
-                            reviewIndex = (reviewIndex - 1 + reviews.length) % reviews.length;
-                            renderReviews('slide-left');
-                            setTimeout(() => {
-                                const newBlocks = reviewsRow.querySelectorAll('.review-slide');
-                                newBlocks.forEach(b => b.classList.remove('slide-left'));
-                            }, 20);
-                        }, 250);
-                    }
-                    // Навешиваем обработчики на стрелки
-                    document.querySelectorAll('.BlockOtzyv').forEach(b => b.remove()); // удалить старые
-                    renderReviews();
-                    // Выбираем стрелки только внутри блока отзывов
-                    const reviewsBlock = reviewsRow.closest('.mt-5');
-                    if (reviewsBlock) {
-                        const nav = reviewsBlock.querySelector('.d-flex.flex-row[style*="gap: 5px"]');
-                        if (nav) {
-                            const circles = nav.querySelectorAll('.Circle');
-                            if (circles.length >= 2) {
-                                circles[0].addEventListener('click', slideReviewsRight);
-                                circles[1].addEventListener('click', slideReviewsLeft);
+
+                        // Рендерим только на мобильных устройствах
+                        function checkAndRenderMobReview() {
+                            if (window.innerWidth < 768) {
+                                renderMobileReview();
+                            } else {
+                                const reviewsRowMob = document.getElementById('reviewsRowMob');
+                                if (reviewsRowMob) reviewsRowMob.innerHTML = '';
                             }
                         }
-                    }
+                        window.addEventListener('DOMContentLoaded', checkAndRenderMobReview);
+                        window.addEventListener('resize', checkAndRenderMobReview);
+                    </script>
+                    
+                    <script>
+                        const reviews = [
+                            {
+                                name: 'ИННА',
+                                text: 'Моему сыну 28 лет, но он начал злоупотреблять алкоголем, связался с компанией таких же неприятных ребят, бросил работу. Пришлось выводить его из запоя и отправлять на лечение, реабилитацию. Сотрудники центра сделали для нашей семьи очень многое, они вылечили моего ребенка от зависимости и помогли мне пережить этот сложный период.',
+                                date: '28.04.2023',
+                                read: true
+                            },
+                            {
+                                name: 'АЛИНА',
+                                text: 'Добрый день! В клинику обращались по поводу вывода из запоя, хочу выразить свою благодарность Михаилу и Артуру за профессиональный подход и поддержку, спасибо вам за помощь.',
+                                date: '28.04.2023',
+                                read: false
+                            },
+                            // Можно добавить больше отзывов
+                        ];
+                        let reviewIndex = 0;
+                        const reviewsRow = document.getElementById('reviewsRow');
+                        function renderReviews(animClass = '') {
+                            reviewsRow.innerHTML = '';
+                            for (let i = 0; i < 2; i++) {
+                                const idx = (reviewIndex + i) % reviews.length;
+                                const r = reviews[idx];
+                                const col = document.createElement('div');
+                                col.className = 'col-6';
+                                const block = document.createElement('div');
+                                block.className = 'BlockOtzyv review-slide' + (animClass ? ' ' + animClass : '');
+                                block.innerHTML = `
+                                    <img src="/images/skoba.png">
+                                    <div class="d-flex flex-column" style="gap: 10px;">
+                                        <p class="basic-bold-text-20">${r.name}</p>
+                                        <p class="basic-normal-text">${r.text}</p>
+                                        ${r.read ? '<p class="basic-normal-text text-click" style="color: #0DA3FF;">Читать полностью</p>' : ''}
+                                    </div>
+                                    <p class="basic-normal-text" style="color: #7192A9;">${r.date}</p>
+                                `;
+                                col.appendChild(block);
+                                reviewsRow.appendChild(col);
+                            }
+                        }
+                        function slideReviewsLeft() {
+                            const blocks = reviewsRow.querySelectorAll('.review-slide');
+                            blocks.forEach(b => b.classList.add('slide-left'));
+                            setTimeout(() => {
+                                reviewIndex = (reviewIndex + 1) % reviews.length;
+                                renderReviews('slide-right');
+                                setTimeout(() => {
+                                    const newBlocks = reviewsRow.querySelectorAll('.review-slide');
+                                    newBlocks.forEach(b => b.classList.remove('slide-right'));
+                                }, 20);
+                            }, 250);
+                        }
+                        function slideReviewsRight() {
+                            const blocks = reviewsRow.querySelectorAll('.review-slide');
+                            blocks.forEach(b => b.classList.add('slide-right'));
+                            setTimeout(() => {
+                                reviewIndex = (reviewIndex - 1 + reviews.length) % reviews.length;
+                                renderReviews('slide-left');
+                                setTimeout(() => {
+                                    const newBlocks = reviewsRow.querySelectorAll('.review-slide');
+                                    newBlocks.forEach(b => b.classList.remove('slide-left'));
+                                }, 20);
+                            }, 250);
+                        }
+                        // Навешиваем обработчики на стрелки
+                        document.querySelectorAll('.BlockOtzyv').forEach(b => b.remove()); // удалить старые
+                        renderReviews();
+                        // Выбираем стрелки только внутри блока отзывов
+                        const reviewsBlock = reviewsRow.closest('.mt-5');
+                        if (reviewsBlock) {
+                            const nav = reviewsBlock.querySelector('.d-flex.flex-row[style*="gap: 5px"]');
+                            if (nav) {
+                                const circles = nav.querySelectorAll('.Circle');
+                                if (circles.length >= 2) {
+                                    circles[0].addEventListener('click', slideReviewsRight);
+                                    circles[1].addEventListener('click', slideReviewsLeft);
+                                }
+                            }
+                        }
                     </script>
                 </div>
             </div>
@@ -933,38 +1287,38 @@
         {{-- Футер --}}
         <div class="Footer">
             <div class="container">
-                <div class="row d-flex flex-row" style="padding: 40px 0px 0px 0px;">
-                    <div class="col-8 d-flex flex-column" style="gap: 30px; padding: 40px; 0px;">
+                <div class="row d-flex flex-row pfzzz">
+                    <div class="col-12 col-md-8 col-lg-8 d-flex flex-column" style="gap: 30px; padding: 40px; 0px;">
                         <div style="gap: -5px;">
                             <p class="basic-big-text-52" style="color: white;">Остались вопросы?</p>
                             <p class="basic-bold-text-20" style="color: white; font-weight: 400;">Просто оставьте заявку и мы вам перезвоним в ближайшее время</p>
                         </div>
 
                         <div style="gap: 20px;" class="d-flex flex-column">
-                            <div class="row">
-                                <div class="col-6">
+                            <div class="row otstup">
+                                <div class="col-12 col-md-6 col-lg-6">
                                     <input type="text" class="InputBlock" placeholder="Ваше имя">
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-12 col-md-6 col-lg-6">
                                     <input type="text" class="InputBlock" placeholder="+7 999-999-99-99">
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-6">
+                            <div class="row otstup">
+                                <div class="col-12 col-md-6 col-lg-6">
                                     <div class="basic-button-press d-flex justify-content-center" style="background-color: white; width: 100% !important;"><p class="basic-bold-text-16" style="color: #0DA3FF;">Получить консультацию</p></div>
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-12 col-md-6 col-lg-6">
                                     <p class="basic-regular-text-14" style="color: #9CB4C5;">Нажимая кнопку «Получить консультацию», вы соглашаетесь с <span style="text-decoration: underline;">политикой конфиденциальности</span></p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-4">
-                        <img src="{{ asset('images/WomanFooter.png') }}">
+                    <div class="col-12 col-md-4 col-lg-4 WomanFooterBlock">
+                        <img src="{{ asset('images/WomanFooter.png') }}" class="WomanFooter">
                     </div>
                 </div>
             </div>

@@ -2,17 +2,32 @@
     transition: transform 0.5s cubic-bezier(.4,2,.6,1), opacity 0.5s;
     will-change: transform, opacity;
 }
+
 .MedPhotos.slide-left img {
     transform: translateX(-120px);
     transition: transform 0.5s;
 }
+
 .MedPhotos.slide-right img {
     transform: translateX(120px);
     transition: transform 0.5s;
 }
+
+.GamburgerBlock {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
 body{
     margin: 0px;
     font-family: 'Inter', sans-serif;
+}
+
+@media (min-width: 576px) {
+    .container, .container-sm {
+        max-width: 735px;
+    }
 }
 
 .font-inter {
@@ -43,12 +58,13 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-
     background-color: #D0E8F9;
-    height: 55px;
+    padding: 10px 0px;
+    height: max-content;
 }
 
 .basic-small-text{
+    font-size: 16px;
     font-weight: 400;
     margin: 0px;
 }
@@ -129,6 +145,9 @@ body{
   margin: 0px;
 }
 
+.WomanJpg{
+    border-radius: 20px;
+}
 
 .underline{
     text-decoration: underline;
@@ -183,6 +202,11 @@ body{
     margin: 0px;
 }
 
+.WomanImg{
+    height: 90%; 
+    position: relative;
+}
+
 .SideBar{
     display: flex;
     gap: 30px;
@@ -218,7 +242,7 @@ body{
 .basic-button-press:active {
     box-shadow: inset 0 0 5px #0DA3FF;
     transform: translateY(3px);
-    background-color: #0DA3FF33;
+    background-color: #FFFFFFE5;
 }
 
 .basic-button:active {
@@ -237,6 +261,7 @@ body{
     display: flex;
     flex-direction: row;
     gap: 20px;
+    align-items: center;
 }
 
 .BlockMain{
@@ -250,6 +275,9 @@ body{
     background-size: auto 106%;
 }
 
+.EtapLech{
+    margin: 100px 0px;
+}
 
 .OurServices{
     padding: 50px 0px;
@@ -357,11 +385,11 @@ body{
 }
 
 .Circle:hover {
-    transform: scale(1.1); /* немного увеличиваем при наведении */
+    transform: scale(1.1);
 }
 
 .Circle:active {
-    transform: scale(0.95); /* эффект нажатия */
+    transform: scale(0.95);
 }
 
 .MedPersonal{
@@ -376,6 +404,16 @@ body{
     flex-direction: column;
     gap: 10px;
     width: max-content;
+    background-color: #F1F8FD;
+    padding: 10px 20px;
+    border-radius: 15px;
+}
+
+.BlockAboutPersonalMob{
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
     background-color: #F1F8FD;
     padding: 10px 20px;
     border-radius: 15px;
@@ -500,10 +538,6 @@ body{
     height: auto;
 }
 
-/* .DowmBlockOtzyv{
-    padding: 100px 0px;
-} */
-
 .Footer{
     width: 100%;
      position: relative;
@@ -560,12 +594,14 @@ body{
 
 .image-slider-one{
     max-width: 590px;
-    max-height: 460px;
+    max-height: 410px;
     overflow: hidden;
     border-radius: 25px;
 }
 
 .image-slider-one #sliderImage {
+    height: 100%;
+    width: 100%;
     transition: opacity 0.6s ease-in-out;
     opacity: 1;
 }
@@ -614,7 +650,7 @@ body{
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    padding: 20px; /* небольшой отступ от краев */
+    padding: 20px;
 }
 
 .modal-overlay img {
@@ -630,4 +666,1223 @@ body{
     cursor: pointer;
     text-decoration: underline;
     user-select: none;
+}
+
+.AboutBlockMarg{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #DDEBF4; 
+    padding: 60px 0px;
+}
+
+.PredWomanImg{
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.IconLine{
+    width: 50px; 
+    height: 50px;
+}
+
+.PredLogoDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.BlockMainDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: max-content;
+    gap: 60px;
+}
+
+.BlockDivOurServices {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.AnswerAnketDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 40px;
+    gap: 20px;
+}
+
+.my-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.pfzzz{
+    padding: 40px 0px 0px 0px;
+}
+
+.D-flex_row{
+    display: flex;
+    flex-direction: row;
+}
+
+.LineHeaderBlock{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.HorizontalBlockMob{
+    display: none;
+}
+
+.DivPriemych{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.ImageSliderMob{
+    display: none;
+}
+
+.AccardeonBlock.open > .d-flex > .basic-bold-text-20 {
+    color: #0DA3FF;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(.4,2,.6,1), opacity 0.4s;
+    opacity: 0;
+}
+
+.accordion-content.open {
+    opacity: 1;
+    max-height: 500px;
+}
+
+.AccardeonBlock {
+    cursor: pointer;
+}
+
+.fade-text {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.fade-text.show {
+    opacity: 1;
+}
+
+.PaddingClassTextInCarusel{
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+    padding: 0px 20px 0px 0px;
+}
+
+.swiper {
+  width: 100%;
+}
+
+.swiper-slide {
+  width: 70% !important;
+}
+
+.CartPersonalMob{
+    display: none;
+}
+
+.StrelkLg{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.MainBlockMedPersonal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: max-content;
+}
+
+.PositionMedPersonal{
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+}
+
+.personalSwiper {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.personalSwiper .swiper-wrapper {
+    align-items: center;
+}
+
+.personalSwiper .swiper-slide {
+        transition: transform 0.3s;
+        display: flex;
+        justify-content: center;
+}
+
+.review-slide {
+    transition: transform 0.25s cubic-bezier(.4,2,.6,1), opacity 0.25s;
+}
+.slide-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+.slide-right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+#reviewsRowMob{
+    display: none;
+}
+
+.BlockStrlki{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.mySwiper{
+    display: none !important;
+}
+
+#carouselExample{
+    display: none !important;
+}
+
+@media (min-width: 1024px) and (max-width: 1199px){
+    .basic-bold-text-16{
+        font-size: 11px;
+    }
+
+    .basic-normal-text {
+        font-size: 14px;
+    }
+
+    .basic-bold-text-24 {
+        font-size: 21px;    
+    }
+
+    .BlockOtzyv img {
+        top: -5px;
+        left: 390px;
+    }
+
+    .basic-button {
+        padding: 1px 16px
+    }
+
+    .SideBar {
+        gap: 20px;
+    }
+
+    .basic-bold-text-18 {
+        font-size: 14px;
+    }
+
+    .basic-small-text {
+        font-size: 14px;
+    }
+
+    .basic-big-text-62 {
+        font-size: 38px;
+        line-height: 39px;
+    }
+
+    .WomanImg{
+        height: 100%; 
+    }
+
+    .PredWomanImg{
+        max-height: 360px;
+    }
+
+    .BlockMain {
+        margin: 20px 0px;
+        background-size: auto 119%;
+    }
+
+    .EtapLech{
+        margin: 50px 0px;
+    }
+
+    .AboutBlockMarg{
+        padding: 30px 0px;
+    }
+
+    .AboutBlock {
+        padding: 20px 0px 30px 0px;
+    }
+
+    .MedPhotos {
+        left: -30px;
+    }
+
+    .WomanJpg{
+        width: 430px;
+    }
+
+    .basic-big-text-52 {
+        font-size: 35px;
+        line-height: 37px;
+    }
+
+    .InputBlock {
+        font-size: 14px;
+    }
+
+    .Priemych {
+        padding: 50px 0px;
+    }
+
+    .FAQ {
+        padding: 50px 0px;
+    }
+
+    .InputBlockWhite {
+        font-size: 14px;
+    }
+
+    .basic-regular-text-14 {
+        font-size: 10px;
+        line-height: 10px;
+    }
+
+    .OurServices {
+        padding: 20px 0px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px){
+
+    .InfoText {
+        font-size: 10px;
+    }
+
+    .pfzzz{
+        padding: 0px;
+    }
+
+    .Footer .col-4 img {
+        width: 240px;
+    }
+
+    .InputBlock {
+        padding: 10px;
+    }
+
+    .my-flex {
+        gap: 10px;
+    }
+
+    .basic-big-text-white {
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    .AnswerAnket {
+        padding: 20px;
+    }
+
+    .AnswerAnketDiv {
+        padding: 0px;
+        gap: 10px;
+    }
+
+    .MedPhotos img {
+        max-width: 240px;
+    }
+
+    .MedPersonal {
+        padding: 40px 0px;
+    }
+
+    .ButtonServicesInside {
+        padding: 6px 13px;
+    }
+
+    .BlockDivOurServices {
+        padding: 0px; 
+    }
+
+    .BlockMainDiv {
+        gap: 30px;
+    }
+
+    .basic-regular-text {
+        font-size: 12px;
+    }
+
+    .PredLogoDiv{
+        padding: 0px;
+        margin: 20px 0px;
+    }
+
+    .LogoImg{
+        width: 80px;
+    }
+
+    .basic-big-text-grey {
+        font-size: 41px;
+        margin: 0px;
+    }
+
+    .IconLine{
+        width: 35px; 
+        height: 35px;
+    }
+
+    .basic-regular-text-16 {
+        font-size: 10px;
+        line-height: 9px;
+    }
+
+    .basic-bold-text-16{
+        font-size: 11px;
+    }
+
+    .basic-normal-text {
+        font-size: 12px;
+    }
+
+    .basic-bold-text-24 {
+        font-size: 21px;    
+    }
+
+    .BlockOtzyv img {
+        top: -5px;
+        left: 250px;
+    }
+
+    .basic-button {
+        padding: 1px 16px
+    }
+
+    .SideBar {
+        gap: 10px;
+    }
+
+    .basic-bold-text-18 {
+        font-size: 12px;
+    }
+
+    .basic-small-text {
+        font-size: 12px;
+    }
+
+    .basic-big-text-62 {
+        font-size: 38px;
+        line-height: 39px;
+    }
+
+    .WomanImg{
+        height: 100%; 
+    }
+
+    .PredWomanImg{
+        max-height: 330px;
+    }
+
+    .BlockMain {
+        margin: 20px 0px;
+        background-size: auto 125%;
+    }
+
+    .EtapLech{
+        margin: 25px 0px;
+    }
+
+    .AboutBlockMarg{
+        padding: 30px 0px;
+    }
+
+    .AboutBlock {
+        padding: 20px 0px 30px 0px;
+    }
+
+    .MedPhotos {
+        left: -30px;
+    }
+
+    .WomanJpg{
+        width: 330px;
+    }
+
+    .basic-big-text-52 {
+        font-size: 26px;
+        line-height: 27px;
+    }
+
+    .InputBlock {
+        font-size: 14px;
+    }
+
+    .Priemych {
+        padding: 50px 0px;
+    }
+
+    .FAQ {
+        padding: 50px 0px;
+    }
+
+    .InputBlockWhite {
+        font-size: 14px;
+    }
+
+    .basic-regular-text-14 {
+        font-size: 10px;
+        line-height: 10px;
+    }
+
+    .OurServices {
+        padding: 20px 0px;
+    }
+}
+
+@media (min-width: 425px) and (max-width: 767px){
+
+    #carouselExample{
+        display: block !important;
+    }
+
+    .mySwiper{
+        display: block !important;
+    }
+
+    .WomanFooterBlock{
+        display: flex;
+        justify-content: center;
+        background: linear-gradient(to top, #0084D6 60%, transparent 50%);
+    }
+
+    .OtzyvBlock{
+        margin-top: 20px !important;
+    }
+
+    #reviewsRowMob{
+        display: flex;
+    }
+
+    #reviewsRow{
+        display: none;
+    }
+
+    .otstup{
+        margin-top: 20px !important;
+        gap: 10px;
+    }
+
+    .PriemychDivImage{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+    }
+
+    .CartPersonalMobImg{
+        border-radius: 20px;
+        width: 100%;
+    }
+
+    .MainBlockMedPersonal{
+        flex-direction: column;
+    }
+
+    .PositionMedPersonal{
+        gap: 10px;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .StrelkLg{
+        display: none !important;
+    }
+
+    .CartPersonalMob{
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .BlockAboutPersonalMob{
+        display: flex;
+    }
+
+    .BlockAboutPersonal{
+        display: none;
+    }
+
+    .MedPhotos{
+        display: none;
+    }
+
+    .swiper {
+        margin-top: 20px;
+    }
+
+    .carousel-item{
+        width: 50%;
+    }
+
+    .gallery{
+        display: none !important;
+    }
+
+    .PaddingClassTextInCarusel{
+        padding: 20px 0px;
+    }
+
+    .ImageSliderMob{
+        max-height: 320px;
+    }
+
+    .DivPriemych {
+        margin-top: 20px;
+        gap: 20px;
+    }
+
+    .HorizontalBlockLineMob{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .image-slider-one{
+        display: none;
+    }   
+
+    .HorizontalBlockMob{
+        display: flex;
+        padding: 20px 0px;
+    }
+
+    .HorizontalBlock{
+        display: none;
+    }
+
+    .MobVersionLineBlock{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }   
+
+    .CartBlock{
+        gap: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .LineHeaderBlock {
+        padding: 0px 40px;
+        text-align: left;
+    }
+
+    .preHeader {
+        padding: 10px 20px;
+        text-align: center;
+    }
+
+    .PredWomanImg {
+        background: url(../images/Back.jpg) no-repeat center bottom;
+        background-size: cover;
+        background-clip: content-box;
+        padding-top: 30%;
+    }
+
+    .D-flex_row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .InfoText {
+        font-size: 10px;
+    }
+
+    .pfzzz{
+        padding: 0px;
+    }
+
+    .Footer .col-4 img {
+        width: 240px;
+    }
+
+    .InputBlock {
+        padding: 10px;
+    }
+
+    .my-flex {
+        gap: 10px;
+    }
+
+    .basic-big-text-white {
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    .AnswerAnket {
+        padding: 20px;
+    }
+
+    .AnswerAnketDiv {
+        padding: 0px;
+        gap: 10px;
+    }
+
+    .MedPhotos img {
+        max-width: 240px;
+    }
+
+    .MedPersonal {
+        padding: 40px 0px;
+    }
+
+    .ButtonServicesInside {
+        padding: 14px 18px;
+    }
+
+    .BlockDivOurServices {
+        padding: 0px; 
+    }
+
+    .BlockMainDiv {
+        text-align: center;
+        display: flex;
+        gap: 30px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .basic-regular-text {
+        font-size: 12px;
+    }
+
+    .PredLogoDiv{
+        padding: 0px;
+        margin: 20px 0px;
+    }
+
+    .LogoImg{
+        width: 80px;
+    }
+
+    .basic-big-text-grey {
+        font-size: 41px;
+        margin: 0px;
+    }
+
+    .IconLine{
+        width: 45px;
+        height: 45px;
+    }
+
+    .basic-regular-text-16 {
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    .basic-bold-text-16{
+        font-size: 16px;
+    }
+
+    .basic-normal-text {
+        font-size: 16px;
+    }
+
+    .basic-bold-text-24 {
+        font-size: 21px;
+        line-height: 20px;
+    }
+
+    .BlockOtzyv img {
+        top: -2px;
+        left: 232px;
+    }
+
+    .BlockOtzyv img {
+        width: 9%;
+    }
+
+    .basic-button {
+        padding: 1px 16px
+    }
+
+    .SideBar {
+        gap: 10px;
+        display: none;
+    }
+
+    .HeaderButton{
+        display: none;
+    }
+
+    .basic-bold-text-18 {
+        font-size: 12px;
+    }
+
+    .basic-small-text {
+        font-size: 12px;
+    }
+
+    .basic-big-text-62 {
+        font-size: 38px;
+        line-height: 39px;
+    }
+
+    .WomanImg{
+        height: 300px; 
+    }
+
+    .PredWomanImg {
+        display: flex;
+        max-height: 310px;
+        justify-content: center;
+        height: max-content;
+    }
+
+    .BlockMain {
+        background: none;
+        margin: 20px 0px;
+        background-size: auto 125%;
+    }
+
+    .EtapLech{
+        margin: 25px 0px;
+    }
+
+    .AboutBlockMarg{
+        padding: 30px 0px;
+    }
+
+    .AboutBlock {
+        padding: 20px 0px 30px 0px;
+    }
+
+    .MedPhotos {
+        left: -30px;
+    }
+
+    .WomanJpg{
+        width: 330px;
+    }
+
+    .basic-big-text-52 {
+        font-size: 36px;
+        line-height: 37px;
+    }
+
+    .InputBlock {
+        font-size: 14px;
+    }
+
+    .Priemych {
+        padding: 50px 0px;
+    }
+
+    .FAQ {
+        padding: 0px;
+    }
+
+    .InputBlockWhite {
+        font-size: 16px;
+    }
+
+    .basic-regular-text-14 {
+        font-size: 10px;
+        line-height: 10px;
+    }
+
+    .OurServices {
+        padding: 20px 0px;
+    }
+
+    .WomanFooter{
+        width: 200px;
+    }
+}
+
+@media (min-width: 375px) and (max-width: 424px){
+
+    #carouselExample{
+        display: block !important;
+    }
+
+    .mySwiper{
+        display: block;
+    }
+
+    .WomanFooterBlock{
+        display: flex;
+        justify-content: center;
+        background: linear-gradient(to top, #0084D6 60%, transparent 50%);
+    }
+
+    .OtzyvBlock{
+        margin-top: 20px !important;
+    }
+
+    #reviewsRowMob{
+        display: flex;
+    }
+
+    #reviewsRow{
+        display: none;
+    }
+
+    .otstup{
+        margin-top: 20px !important;
+        gap: 10px;
+    }
+
+    .PriemychDivImage{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+    }
+
+    .CartPersonalMobImg{
+        border-radius: 20px;
+        width: 100%;
+    }
+
+    .MainBlockMedPersonal{
+        flex-direction: column;
+    }
+
+    .PositionMedPersonal{
+        gap: 10px;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .StrelkLg{
+        display: none !important;
+    }
+
+    .CartPersonalMob{
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .BlockAboutPersonalMob{
+        display: flex;
+    }
+
+    .BlockAboutPersonal{
+        display: none;
+    }
+
+    .MedPhotos{
+        display: none;
+    }
+
+    .swiper {
+        margin-top: 20px;
+    }
+
+    .carousel-item{
+        width: 50%;
+    }
+
+    .gallery{
+        display: none !important;
+    }
+
+    .PaddingClassTextInCarusel{
+        padding: 20px 0px;
+    }
+
+    .ImageSliderMob{
+        max-height: 320px;
+    }
+
+    .DivPriemych {
+        margin-top: 20px;
+        gap: 20px;
+    }
+
+    .HorizontalBlockLineMob{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .image-slider-one{
+        display: none;
+    }   
+
+    .HorizontalBlockMob{
+        display: flex;
+        padding: 20px 0px;
+    }
+
+    .HorizontalBlock{
+        display: none;
+    }
+
+    .MobVersionLineBlock{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }   
+
+    .CartBlock{
+        gap: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .LineHeaderBlock {
+        padding: 0px 40px;
+        text-align: left;
+    }
+
+    .preHeader {
+        padding: 10px 20px;
+        text-align: center;
+    }
+
+    .PredWomanImg {
+        background: url(../images/Back.jpg) no-repeat center bottom;
+        background-size: cover;
+        background-clip: content-box;
+        padding-top: 30%;
+    }
+
+    .D-flex_row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .InfoText {
+        font-size: 10px;
+    }
+
+    .pfzzz{
+        padding: 0px;
+    }
+
+    .Footer .col-4 img {
+        width: 240px;
+    }
+
+    .InputBlock {
+        padding: 10px;
+    }
+
+    .my-flex {
+        gap: 10px;
+    }
+
+    .basic-big-text-white {
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    .AnswerAnket {
+        padding: 20px;
+    }
+
+    .AnswerAnketDiv {
+        padding: 0px;
+        gap: 10px;
+    }
+
+    .MedPhotos img {
+        max-width: 240px;
+    }
+
+    .MedPersonal {
+        padding: 40px 0px;
+    }
+
+    .ButtonServicesInside {
+        padding: 14px 18px;
+    }
+
+    .BlockDivOurServices {
+        padding: 20px 0px;
+        gap: 20px;
+    }
+
+    .BlockMainDiv {
+        text-align: center;
+        display: flex;
+        gap: 30px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .basic-regular-text {
+        font-size: 14px;
+    }
+
+    .PredLogoDiv{
+        padding: 0px;
+        margin: 20px 0px;
+    }
+
+    .LogoImg{
+        width: 140px;
+    }
+
+    .basic-big-text-grey {
+        font-size: 41px;
+        margin: 0px;
+    }
+
+    .IconLine{
+        width: 45px;
+        height: 45px;
+    }
+
+    .basic-regular-text-16 {
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    .basic-bold-text-16{
+        font-size: 15px;
+    }
+
+    .basic-normal-text {
+        font-size: 16px;
+    }
+
+    .basic-bold-text-24 {
+        font-size: 21px;
+        line-height: 20px;
+    }
+
+    .BlockOtzyv img {
+        top: -2px;
+        left: 232px;
+    }
+
+    .BlockOtzyv img {
+        width: 9%;
+    }
+
+    .basic-button {
+        padding: 1px 16px
+    }
+
+    .SideBar {
+        gap: 10px;
+        display: none;
+    }
+
+    .HeaderButton{
+        display: none;
+    }
+
+    .basic-bold-text-18 {
+        font-size: 16px;
+    }
+
+    .basic-small-text {
+        font-size: 12px;
+    }
+
+    .basic-big-text-62 {
+        font-size: 38px;
+        line-height: 39px;
+    }
+
+    .WomanImg{
+        height: 300px; 
+    }
+
+    .PredWomanImg {
+        display: flex;
+        max-height: 310px;
+        justify-content: center;
+        height: max-content;
+    }
+
+    .BlockMain {
+        background: none;
+        margin: 20px 0px;
+        background-size: auto 125%;
+    }
+
+    .EtapLech{
+        margin: 25px 0px;
+    }
+
+    .AboutBlockMarg{
+        padding: 30px 0px;
+    }
+
+    .AboutBlock {
+        padding: 20px 0px 30px 0px;
+    }
+
+    .MedPhotos {
+        left: -30px;
+    }
+
+    .WomanJpg{
+        width: 330px;
+    }
+
+    .basic-big-text-52 {
+        font-size: 36px;
+        line-height: 37px;
+    }
+
+    .InputBlock {
+        font-size: 14px;
+    }
+
+    .Priemych {
+        padding: 50px 0px;
+    }
+
+    .FAQ {
+        padding: 0px;
+    }
+
+    .InputBlockWhite {
+        font-size: 16px;
+    }
+
+    .basic-regular-text-14 {
+        font-size: 10px;
+        line-height: 10px;
+    }
+
+    .OurServices {
+        padding: 20px 0px;
+    }
+
+    .WomanFooter{
+        width: 200px;
+    }
+
+    .MegdText{
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    
 }
