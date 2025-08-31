@@ -6,6 +6,8 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -192,7 +194,7 @@ document.getElementById('exitMenuBtn')?.addEventListener('click', function() {
                                                         <div class="col-12 col-md-6 col-lg-6">
                                                             <input type="text" name="phone" class="InputBlockModal" placeholder="+7 999-999-99-99" required>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6">
+                                                        <div class="col-12 col-md-12 col-lg-12 mt-3">
                                                             <input type="email" name="email" class="InputBlockModal" placeholder="Email" required>
                                                         </div>
                                                     </div>
@@ -221,9 +223,11 @@ document.getElementById('exitMenuBtn')?.addEventListener('click', function() {
                                                     .then(async res => {
                                                         const data = await res.json();
                                                         if (res.ok && data.success) {
-                                                            form.style.display = 'none';
-                                                            successDiv.textContent = data.message || 'Заявка успешно отправлена!';
-                                                            successDiv.style.display = 'block';
+                                                            // Заменяем содержимое модального окна на сообщение об успехе
+                                                            const modalBody = form.closest('.modal-body');
+                                                            if (modalBody) {
+                                                                modalBody.innerHTML = `<div style='padding:40px 0;text-align:center;'><h4 style='color:#0DA3FF;'>${data.message || 'Заявка успешно отправлена!'}</h4><p class='basic-normal-text' style='margin-top:16px;'>Мы свяжемся с вами в ближайшее время.</p></div>`;
+                                                            }
                                                         } else {
                                                             errorDiv.textContent = (data.errors && data.errors.join('\n')) || 'Ошибка отправки.';
                                                             errorDiv.style.display = 'block';
